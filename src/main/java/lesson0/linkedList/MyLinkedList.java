@@ -184,6 +184,19 @@ public class MyLinkedList<T> {
     public boolean hasCycle2(){
         // Two-Pointers Approach. Hare and Tortoise. Floyd’s Cycle-Finding Algorithm
         // https://www.eolymp.com/en/problems/10042
+        if(head == null) return false;
+        Node<T> curSlow = head;
+        Node<T> curFast = head;
+
+        while(true){
+            curSlow = curSlow.next;
+
+            if(curFast.next == null) return false;
+            curFast = curFast.next.next;
+
+            if(curSlow == null || curFast == null) return false;
+            if(curSlow.value.equals(curFast.value)) return true;
+        }
     }
 
     public Node detectCycle(Node cur){
