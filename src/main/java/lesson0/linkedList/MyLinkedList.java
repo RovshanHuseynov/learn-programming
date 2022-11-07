@@ -1,5 +1,8 @@
 package lesson0.linkedList;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MyLinkedList<T> {
     // https://www.eolymp.com/en/problems/10045
     private Node<T> head;
@@ -154,16 +157,24 @@ public class MyLinkedList<T> {
         return sum;
     }
 
-    public int hasCycle(Node cur) {
-        // with hashSet
-        // https://www.eolymp.com/en/problems/10042
-        return 0;
+    public boolean hasCycle() {
+        // https://www.eolymp.com/en/problems/10042 (with hashSet)
+        Set<T> set = new HashSet<>();
+        Node<T> cur = head;
+
+        while(cur != null){
+            if(set.contains(cur.value)) return true;
+
+            set.add(cur.value);
+            cur = cur.next;
+        }
+        return false;
     }
 
-    public int hasCycle2(Node head){
+    public boolean hasCycle2(){
         // Two-Pointers Approach. Hare and Tortoise. Floyd’s Cycle-Finding Algorithm
         // https://www.eolymp.com/en/problems/10042
-        return 0;
+        return false;
     }
 
     public Node detectCycle(Node cur){
