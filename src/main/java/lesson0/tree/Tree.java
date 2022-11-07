@@ -62,6 +62,7 @@ public class Tree {
     }
 
     public void printInOrderTraversal(Node cur){
+        // https://www.eolymp.com/en/problems/10059
         if(cur == head) System.out.print("printInOrder: ");
 
         if(cur.left != null) printInOrderTraversal(cur.left);
@@ -70,6 +71,7 @@ public class Tree {
     }
 
     public void printPostOrderTraversal(Node cur){
+        // https://www.eolymp.com/en/problems/10060
         if(cur == head) System.out.print("printPostOrderTraversal: ");
 
         if(cur.left != null) printPostOrderTraversal(cur.left);
@@ -82,6 +84,12 @@ public class Tree {
     }
 
     public Node minimum(Node cur){
+        // https://www.eolymp.com/en/problems/10061
+        return null;
+    }
+
+    public Node maximum(Node cur){
+        // https://www.eolymp.com/en/problems/10062
         return null;
     }
 
@@ -94,10 +102,12 @@ public class Tree {
     }
 
     public int sum(Node cur){
+        // https://www.eolymp.com/en/problems/10064
         return 0;
     }
 
     public Node contains(Node cur, int element){
+        // https://www.eolymp.com/en/problems/10063
         return null;
     }
 
