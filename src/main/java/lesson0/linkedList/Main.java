@@ -19,11 +19,9 @@ public class Main {
         System.out.println("sizeRecursion: " + linkedListInteger.sizeRecursion(linkedListInteger.getHead()));
         System.out.println("sum: " + linkedListInteger.sum());
 
-        System.out.println("contains4: " + linkedListInteger.contains(4));
         System.out.println("hasCycle(): " + linkedListInteger.hasCycle());
         System.out.println("hasCycle2(): " + linkedListInteger.hasCycle2());
         linkedListInteger.addLast(4);
-        System.out.println("contains4: " + linkedListInteger.contains(4));
         System.out.println("hasCycle(): " + linkedListInteger.hasCycle());
         System.out.println("hasCycle2(): " + linkedListInteger.hasCycle2());
 

@@ -17,7 +17,13 @@ public class MyLinkedList<T> {
             while (cur.next != null){
                 cur = cur.next;
             }
-            cur.next = newNode;
+
+            if(contains(value) != null){
+                cur.next = contains(value);
+            }
+            else {
+                cur.next = newNode;
+            }
         }
 
         System.out.println("addLast: " + value);
