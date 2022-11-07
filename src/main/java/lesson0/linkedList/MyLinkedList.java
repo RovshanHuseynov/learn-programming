@@ -122,18 +122,12 @@ public class MyLinkedList<T> {
 
     public void printReverseRecursion(Node<T> cur){
         // https://www.eolymp.com/en/problems/10041
-        if(cur != null) printReverseRecursion(cur.next);
-
-        if(head == null) {
-            System.out.println("printReverseRecursion: ");
-            return;
-        }
         if(cur == null) {
             System.out.print("printReverseRecursion: ");
             return;
         }
 
-
+        printReverseRecursion(cur.next);
         if(cur == head){
             System.out.println(cur.value);
         } else {
@@ -141,9 +135,8 @@ public class MyLinkedList<T> {
         }
     }
 
-    public Node<T> reverse(Node<T> head){
+    public void reverse(Node<T> cur){
         // https://www.eolymp.com/en/problems/10046
-        return null;
     }
 
     public int sum(){
