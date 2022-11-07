@@ -136,19 +136,18 @@ public class MyLinkedList<T> {
     }
 
     public void reverse(){
+        System.out.println("reverse");
         // https://www.eolymp.com/en/problems/10046
-        if(head == null) return;
 
-        Node<T> cur = head.next;
-        Node<T> prev = head;
-        prev.next = null;
-        Node<T> temp;
+        Node<T> cur = head;
+        Node<T> prev = null;
+        Node<T> next;
 
         while(cur != null){
-            temp = cur.next;
+            next = cur.next;
             cur.next = prev;
             prev = cur;
-            cur = temp;
+            cur = next;
         }
         head = prev;
     }

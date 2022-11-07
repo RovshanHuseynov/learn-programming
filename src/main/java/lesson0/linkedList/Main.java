@@ -23,6 +23,9 @@ public class Main {
         System.out.println("hasCycle2: " + linkedListInteger.hasCycle2());
         System.out.println("detectCycle: " + linkedListInteger.detectCycle());
         linkedListInteger.printLoop();
+        linkedListInteger.reverse();
+        linkedListInteger.printLoop();
+
 
         System.out.println("--------------------------------------");
         MyLinkedList<String> linkedListString = new MyLinkedList<>();
