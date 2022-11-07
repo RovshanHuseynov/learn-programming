@@ -1,7 +1,7 @@
 package lesson0.tree;
 
 public class Tree {
-    Node head;
+    private Node head;
 
     public void addLoop(int value){
         Node newNode = new Node(value);
@@ -75,5 +75,53 @@ public class Tree {
         if(cur.left != null) printPostOrderTraversal(cur.left);
         if(cur.right != null) printPostOrderTraversal(cur.right);
         System.out.print(cur.value + " ");
+    }
+
+    public Node getHead(){
+        return head;
+    }
+
+    public Node minimum(Node cur){
+        return null;
+    }
+
+    public int sumLeft(Node cur){
+        return 0;
+    }
+
+    public int sumLeaves(Node cur){
+        return 0;
+    }
+
+    public int sum(Node cur){
+        return 0;
+    }
+
+    public Node contains(Node cur, int element){
+        return null;
+    }
+
+    public boolean isSame(Node cur1, Node cur2){
+        return false;
+    }
+
+    public int minDepth(Node cur){
+        return 0;
+    }
+
+    public int maxDepth(Node cur){
+        return 0;
+    }
+
+    public Node invert(Node cur){
+        return null;
+    }
+
+    public boolean isSymmetric(Node cur){
+        return false;
+    }
+
+    public boolean isBalanced(Node cur){
+        return false;
     }
 }

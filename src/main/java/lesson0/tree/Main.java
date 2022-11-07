@@ -11,14 +11,14 @@ public class Main {
         tree.addLoop(9);
         tree.addLoop(16);
 
-        tree.printPreOrderTraversal(tree.head);
+        tree.printPreOrderTraversal(tree.getHead());
         System.out.println();
-        tree.printInOrderTraversal(tree.head);
+        tree.printInOrderTraversal(tree.getHead());
         System.out.println();
-        tree.printPostOrderTraversal(tree.head);
+        tree.printPostOrderTraversal(tree.getHead());
         System.out.println();
 
-        tree.addRecursion(tree.head, 20);
-        tree.printPreOrderTraversal(tree.head);
+        tree.addRecursion(tree.getHead(), 20);
+        tree.printPreOrderTraversal(tree.getHead());
     }
 }
