@@ -19,9 +19,13 @@ public class Main {
         System.out.println("sizeRecursion: " + linkedListInteger.sizeRecursion(linkedListInteger.getHead()));
         System.out.println("sum: " + linkedListInteger.sum());
 
+        System.out.println("contains4: " + linkedListInteger.contains(4));
         System.out.println("hasCycle(): " + linkedListInteger.hasCycle());
+        System.out.println("hasCycle2(): " + linkedListInteger.hasCycle2());
         linkedListInteger.addLast(4);
+        System.out.println("contains4: " + linkedListInteger.contains(4));
         System.out.println("hasCycle(): " + linkedListInteger.hasCycle());
+        System.out.println("hasCycle2(): " + linkedListInteger.hasCycle2());
 
         System.out.println("--------------------------------------");
         MyLinkedList<String> linkedListString = new MyLinkedList<>();
@@ -37,8 +41,10 @@ public class Main {
         linkedListString.addFirst("zero");
         printLinkedList(linkedListString);
         System.out.println("hasCycle(): " + linkedListString.hasCycle());
+        System.out.println("hasCycle2(): " + linkedListString.hasCycle2());
         linkedListString.addLast("first");
         System.out.println("hasCycle(): " + linkedListString.hasCycle());
+        System.out.println("hasCycle2(): " + linkedListString.hasCycle2());
         printLinkedList(linkedListString);
         System.out.println("removeFirst: " + linkedListString.removeFirst());
         System.out.println("removeFirst: " + linkedListString.removeFirst());

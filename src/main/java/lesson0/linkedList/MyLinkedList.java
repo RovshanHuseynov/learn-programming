@@ -157,6 +157,16 @@ public class MyLinkedList<T> {
         return sum;
     }
 
+    public Node contains(T value){
+        Node<T> cur = head;
+
+        while(cur != null){
+            if(cur.value.equals(value)) return cur;
+            cur = cur.next;
+        }
+        return null;
+    }
+
     public boolean hasCycle() {
         // https://www.eolymp.com/en/problems/10042 (with hashSet)
         Set<T> set = new HashSet<>();
@@ -174,7 +184,6 @@ public class MyLinkedList<T> {
     public boolean hasCycle2(){
         // Two-Pointers Approach. Hare and Tortoise. Floyd’s Cycle-Finding Algorithm
         // https://www.eolymp.com/en/problems/10042
-        return false;
     }
 
     public Node detectCycle(Node cur){
