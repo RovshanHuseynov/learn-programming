@@ -141,13 +141,8 @@ public class MyLinkedList<T> {
         }
     }
 
-    public Node reverse(Node head){
+    public Node<T> reverse(Node<T> head){
         // https://www.eolymp.com/en/problems/10046
-        return null;
-    }
-
-    public Node merge(Node cur1, Node cur2){
-        // https://www.eolymp.com/en/problems/10044
         return null;
     }
 
@@ -163,7 +158,7 @@ public class MyLinkedList<T> {
         return sum;
     }
 
-    public Node contains(T value){
+    public Node<T> contains(T value){
         Node<T> cur = head;
 
         while(cur != null){
@@ -205,13 +200,27 @@ public class MyLinkedList<T> {
         }
     }
 
-    public Node detectCycle(Node cur){
+    public Node<T> detectCycle(){
         // https://www.eolymp.com/en/problems/10043
+        Set<T> set = new HashSet<>();
+        Node<T> cur = head;
+
+        while(cur != null){
+            if(set.contains(cur.value)) return cur;
+
+            set.add(cur.value);
+            cur = cur.next;
+        }
         return null;
     }
 
-    public Node intersection(Node cur1, Node cur2){
+    public Node<T> intersection(Node<T> cur1, Node<T> cur2){
         // https://www.eolymp.com/en/problems/10047
+        return null;
+    }
+
+    public Node<T> merge(Node<T> cur1, Node<T> cur2){
+        // https://www.eolymp.com/en/problems/10044
         return null;
     }
 }
