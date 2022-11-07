@@ -1,6 +1,7 @@
 package lesson0.linkedList;
 
 public class MyLinkedList<T> {
+    // https://www.eolymp.com/en/problems/10045
     private Node<T> head;
 
     public void addLast(T value){
@@ -111,6 +112,7 @@ public class MyLinkedList<T> {
     }
 
     public void printReverseRecursion(Node<T> cur){
+        // https://www.eolymp.com/en/problems/10041
         if(cur != null) printReverseRecursion(cur.next);
 
         if(head == null) {
@@ -131,10 +133,12 @@ public class MyLinkedList<T> {
     }
 
     public Node reverse(Node head){
+        // https://www.eolymp.com/en/problems/10046
         return null;
     }
 
     public Node merge(Node cur1, Node cur2){
+        // https://www.eolymp.com/en/problems/10044
         return null;
     }
 
@@ -151,14 +155,24 @@ public class MyLinkedList<T> {
     }
 
     public int hasCycle(Node cur) {
+        // with hashSet
+        // https://www.eolymp.com/en/problems/10042
         return 0;
     }
 
     public int hasCycle2(Node head){
+        // Two-Pointers Approach. Hare and Tortoise. Floyd’s Cycle-Finding Algorithm
+        // https://www.eolymp.com/en/problems/10042
         return 0;
     }
 
     public Node detectCycle(Node cur){
+        // https://www.eolymp.com/en/problems/10043
+        return null;
+    }
+
+    public Node intersection(Node cur1, Node cur2){
+        // https://www.eolymp.com/en/problems/10047
         return null;
     }
 }

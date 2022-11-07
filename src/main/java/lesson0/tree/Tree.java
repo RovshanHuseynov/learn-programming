@@ -54,6 +54,7 @@ public class Tree {
     }
 
     public void printPreOrderTraversal(Node cur){
+        // https://www.eolymp.com/en/problems/10057
         if(cur == head) System.out.print("printPreOrderTraversal: ");
 
         System.out.print(cur.value + " ");
