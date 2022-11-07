@@ -135,8 +135,22 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void reverse(Node<T> cur){
+    public void reverse(){
         // https://www.eolymp.com/en/problems/10046
+        if(head == null) return;
+
+        Node<T> cur = head.next;
+        Node<T> prev = head;
+        prev.next = null;
+        Node<T> temp;
+
+        while(cur != null){
+            temp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = temp;
+        }
+        head = prev;
     }
 
     public int sum(){
