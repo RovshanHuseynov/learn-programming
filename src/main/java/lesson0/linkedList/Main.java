@@ -23,7 +23,7 @@ public class Main {
         System.out.println("hasCycle2: " + linkedListInteger.hasCycle2());
         System.out.println("detectCycle: " + linkedListInteger.detectCycle());
         linkedListInteger.printLoop();
-        linkedListInteger.reverse();
+        linkedListInteger.reverseLoop();
         linkedListInteger.printLoop();
 
 
@@ -55,6 +55,24 @@ public class Main {
 
         System.out.println("getTail: " + linkedListString.getTail());
         System.out.println("getHead: " + linkedListString.getHead());
+
+
+        System.out.println("--------------------------------------");
+        MyLinkedList<Integer> test1 = new MyLinkedList<>();
+        test1.addLast(1);
+        test1.addLast(2);
+        test1.addLast(3);
+        test1.addLast(4);
+        test1.addLast(7);
+        test1.addLast(8);
+        test1.addLast(9);
+        MyLinkedList<Integer> test2 = new MyLinkedList<>();
+        test2.addLast(5);
+        test2.addLast(6);
+        test2.addLast(7);
+        test2.addLast(8);
+        test2.addLast(9);
+        System.out.println(test1.intersection(test1.getHead(), test2.getHead()));
     }
 
     public static void printLinkedList(MyLinkedList<String> linkedList){

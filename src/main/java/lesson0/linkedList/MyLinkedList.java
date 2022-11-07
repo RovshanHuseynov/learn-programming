@@ -135,7 +135,7 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void reverse(){
+    public void reverseLoop(){
         System.out.println("reverse");
         // https://www.eolymp.com/en/problems/10046
 
@@ -150,6 +150,9 @@ public class MyLinkedList<T> {
             cur = next;
         }
         head = prev;
+    }
+
+    public void reverseRecursion(){
     }
 
     public int sum(){
@@ -220,9 +223,18 @@ public class MyLinkedList<T> {
         return null;
     }
 
-    public Node<T> intersection(Node<T> cur1, Node<T> cur2){
+    public Node<T> intersection(Node<T> head1, Node<T> head2){
         // https://www.eolymp.com/en/problems/10047
-        return null;
+
+        Node<T> cur1 = head1;
+        Node<T> cur2 = head2;
+        while(true){
+            if(cur1 == null || cur2 == null) return null;
+
+            if((int) cur1.value < (int) cur2.value) cur1 = cur1.next;
+            else if((int) cur1.value > (int) cur2.value) cur2 = cur2.next;
+            else if(cur1.value == cur2.value) return cur1;
+        }
     }
 
     public Node<T> merge(Node<T> cur1, Node<T> cur2){
