@@ -73,6 +73,20 @@ public class Main {
         test2.addLast(8);
         test2.addLast(9);
         System.out.println(test1.intersection(test1.getHead(), test2.getHead()));
+
+        System.out.println("--------------------------------------");
+        MyLinkedList<Integer> test3 = new MyLinkedList<>();
+        test3.addLast(1);
+        test3.addLast(4);
+        test3.addLast(7);
+        test3.addLast(8);
+        test3.addLast(9);
+        MyLinkedList<Integer> test4 = new MyLinkedList<>();
+        test4.addLast(2);
+        test4.addLast(6);
+        test4.addLast(8);
+        test4.addLast(10);
+        test3.printWithGivenHead(test3.merge(test3.getHead(), test4.getHead()));
     }
 
     public static void printLinkedList(MyLinkedList<String> linkedList){

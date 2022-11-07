@@ -225,20 +225,37 @@ public class MyLinkedList<T> {
 
     public Node<T> intersection(Node<T> head1, Node<T> head2){
         // https://www.eolymp.com/en/problems/10047
-
         Node<T> cur1 = head1;
         Node<T> cur2 = head2;
-        while(true){
-            if(cur1 == null || cur2 == null) return null;
-
+        while(cur1 != null && cur2 != null){
             if((int) cur1.value < (int) cur2.value) cur1 = cur1.next;
             else if((int) cur1.value > (int) cur2.value) cur2 = cur2.next;
             else if(cur1.value == cur2.value) return cur1;
         }
+        return null;
     }
 
     public Node<T> merge(Node<T> cur1, Node<T> cur2){
         // https://www.eolymp.com/en/problems/10044
-        return null;
+
+        if(cur1 == null) return cur2;
+        if(cur2 == null) return cur1;
+        if((int) cur1.value <= (int) cur2.value){
+            cur1.next = merge(cur1.next, cur2);
+            return cur1;
+        } else {
+            cur2.next = merge(cur1, cur2.next);
+            return cur2;
+        }
+    }
+
+    public void printWithGivenHead(Node<T> head){
+        System.out.print("printWithHead: ");
+        Node<T> cur = head;
+        while(cur != null){
+            System.out.print(cur.value + ", ");
+            cur = cur.next;
+        }
+        System.out.println();
     }
 }
