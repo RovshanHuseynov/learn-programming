@@ -104,6 +104,11 @@ public class Tree {
 
     public int sumLeft(Node cur){
         // https://www.eolymp.com/en/problems/10111
+
+        if(cur != null &&
+                cur.left != null &&
+                cur.left.left == null
+                && cur.left.right == null) return cur.left.value + sumLeft(cur.left) + sumLeft(cur.right);
         return 0;
     }
 
