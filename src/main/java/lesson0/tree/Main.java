@@ -20,11 +20,13 @@ public class Main {
         System.out.println();
 
         tree.addRecursion(tree.getHead(), 20);
+        tree.addRecursion(tree.getHead(), 5);
         tree.printPreOrderTraversal(tree.getHead());
         System.out.println();
 
         System.out.println("minimum: " + tree.minimum());
         System.out.println("maximum: " + tree.maximum());
         System.out.println("contains: " + tree.contains(tree.getHead(), 9));
+        System.out.println("sum: " + tree.sum(tree.getHead()));
     }
 }

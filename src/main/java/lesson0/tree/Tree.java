@@ -112,7 +112,8 @@ public class Tree {
 
     public int sum(Node cur){
         // https://www.eolymp.com/en/problems/10064
-        return 0;
+        if(cur == null) return 0;
+        return cur.value + sum(cur.left) + sum(cur.right);
     }
 
     public Node contains(Node cur, int element){
