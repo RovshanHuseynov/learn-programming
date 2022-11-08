@@ -34,5 +34,6 @@ public class Main {
         System.out.println("contains: " + tree.contains(tree.getHead(), 9));
         System.out.println("sum: " + tree.sum(tree.getHead()));
         System.out.println("sumLeft: " + tree.sumLeft(tree.getHead()));
+        System.out.println("sumLeaves: " + tree.sumLeaves(tree.getHead()));
     }
 }

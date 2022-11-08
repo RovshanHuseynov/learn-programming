@@ -107,14 +107,18 @@ public class Tree {
 
         if(cur != null &&
                 cur.left != null &&
-                cur.left.left == null
-                && cur.left.right == null) return cur.left.value + sumLeft(cur.left) + sumLeft(cur.right);
+                cur.left.left == null &&
+                cur.left.right == null) return cur.left.value + sumLeft(cur.left) + sumLeft(cur.right);
         return 0;
     }
 
     public int sumLeaves(Node cur){
         // https://www.eolymp.com/en/problems/10113
-        return 0;
+
+        if(cur == null) return 0;
+        if(cur.left == null &&
+                cur.right == null) return cur.value + sumLeaves(cur.left) + sumLeaves(cur.right);
+        else return sumLeaves(cur.left) + sumLeaves(cur.right);
     }
 
     public int sum(Node cur){
