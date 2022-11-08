@@ -117,7 +117,10 @@ public class Tree {
 
     public Node contains(Node cur, int element){
         // https://www.eolymp.com/en/problems/10063
-        return null;
+        if(cur == null) return null;
+        if(cur.value == element) return cur;
+        else if(element < cur.value) return contains(cur.left, element);
+        else return contains(cur.right, element);
     }
 
     public boolean isSame(Node cur1, Node cur2){

@@ -25,5 +25,6 @@ public class Main {
 
         System.out.println("minimum: " + tree.minimum());
         System.out.println("maximum: " + tree.maximum());
+        System.out.println("contains: " + tree.contains(tree.getHead(), 9));
     }
 }
