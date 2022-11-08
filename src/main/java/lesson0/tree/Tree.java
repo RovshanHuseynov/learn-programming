@@ -103,10 +103,12 @@ public class Tree {
     }
 
     public int sumLeft(Node cur){
+        // https://www.eolymp.com/en/problems/10111
         return 0;
     }
 
     public int sumLeaves(Node cur){
+        // https://www.eolymp.com/en/problems/10113
         return 0;
     }
 
@@ -124,27 +126,33 @@ public class Tree {
         else return contains(cur.right, element);
     }
 
-    public boolean isSame(Node cur1, Node cur2){
-        return false;
-    }
-
     public int minDepth(Node cur){
+        // https://www.eolymp.com/en/problems/10109
         return 0;
     }
 
     public int maxDepth(Node cur){
+        // https://www.eolymp.com/en/problems/10110
         return 0;
     }
 
     public Node invert(Node cur){
+        // https://www.eolymp.com/en/problems/10114
         return null;
     }
 
     public boolean isSymmetric(Node cur){
+        // https://www.eolymp.com/en/problems/10115
         return false;
     }
 
     public boolean isBalanced(Node cur){
+        // https://www.eolymp.com/en/problems/10112
+        return false;
+    }
+
+    public boolean isSame(Node cur1, Node cur2){
+        // https://www.eolymp.com/en/problems/10108
         return false;
     }
 }
