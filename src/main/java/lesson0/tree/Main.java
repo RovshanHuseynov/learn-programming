@@ -9,6 +9,7 @@ public class Main {
         tree.addLoop(3);
         tree.addLoop(10);
         tree.addLoop(9);
+        tree.addLoop(0);
         tree.addLoop(16);
 
         tree.printPreOrderTraversal(tree.getHead());
@@ -20,5 +21,9 @@ public class Main {
 
         tree.addRecursion(tree.getHead(), 20);
         tree.printPreOrderTraversal(tree.getHead());
+        System.out.println();
+
+        System.out.println("minimum: " + tree.minimum());
+        System.out.println("maximum: " + tree.maximum());
     }
 }

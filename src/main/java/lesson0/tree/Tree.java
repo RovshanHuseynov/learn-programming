@@ -84,14 +84,22 @@ public class Tree {
         return head;
     }
 
-    public Node minimum(Node cur){
+    public Node minimum(){
         // https://www.eolymp.com/en/problems/10061
-        return null;
+        if(head == null) return null;
+
+        Node min = head;
+        while(min.left != null) min = min.left;
+        return min;
     }
 
-    public Node maximum(Node cur){
+    public Node maximum(){
         // https://www.eolymp.com/en/problems/10062
-        return null;
+        if(head == null) return null;
+
+        Node min = head;
+        while(min.right != null) min = min.right;
+        return min;
     }
 
     public int sumLeft(Node cur){
