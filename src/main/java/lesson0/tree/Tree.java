@@ -70,9 +70,10 @@ public class Tree {
         // https://www.eolymp.com/en/problems/10059
         if(cur == head) System.out.print("printInOrder: ");
 
-        if(cur.left != null) printInOrderTraversal(cur.left);
+        if(cur == null) return;
+        printInOrderTraversal(cur.left);
         System.out.print(cur.value + " ");
-        if(cur.right != null) printInOrderTraversal(cur.right);
+        printInOrderTraversal(cur.right);
     }
 
     public void printPostOrderTraversal(Node cur){
