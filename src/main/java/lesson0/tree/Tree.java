@@ -1,7 +1,5 @@
 package lesson0.tree;
 
-import java.util.Objects;
-
 public class Tree {
     private Node head;
 
@@ -147,7 +145,9 @@ public class Tree {
         if(cur == null) return 0;
         if(cur.left == null && cur.right == null) return 1;
 
-        return 1 + Math.min(minDepth(cur.left), minDepth(cur.right));
+        if(cur.left == null) return 1 + minDepth(cur.right);
+        else if(cur.right == null) return 1 + minDepth(cur.left);
+        else return 1 + Math.min(minDepth(cur.left), minDepth(cur.right));
     }
 
     public int maxDepth(Node cur){
