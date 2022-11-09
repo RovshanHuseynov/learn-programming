@@ -80,8 +80,9 @@ public class Tree {
         // https://www.eolymp.com/en/problems/10060
         if(cur == head) System.out.print("printPostOrderTraversal: ");
 
-        if(cur.left != null) printPostOrderTraversal(cur.left);
-        if(cur.right != null) printPostOrderTraversal(cur.right);
+        if(cur == null) return;
+        printPostOrderTraversal(cur.left);
+        printPostOrderTraversal(cur.right);
         System.out.print(cur.value + " ");
     }
 
