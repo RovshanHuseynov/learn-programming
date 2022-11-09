@@ -1,5 +1,7 @@
 package lesson0.tree;
 
+import java.util.Objects;
+
 public class Tree {
     private Node head;
 
@@ -57,9 +59,11 @@ public class Tree {
         // https://www.eolymp.com/en/problems/10057
         if(cur == head) System.out.print("printPreOrderTraversal: ");
 
-        System.out.print(cur.value + " ");
-        if(cur.left != null) printPreOrderTraversal(cur.left);
-        if(cur.right != null) printPreOrderTraversal(cur.right);
+        if(cur != null) System.out.print(cur.value + " ");
+        else return;
+
+        printPreOrderTraversal(cur.left);
+        printPreOrderTraversal(cur.right);
     }
 
     public void printInOrderTraversal(Node cur){
@@ -137,7 +141,11 @@ public class Tree {
 
     public int minDepth(Node cur){
         // https://www.eolymp.com/en/problems/10109
-        return 0;
+
+        if(cur == null) return 0;
+        if(cur.left == null && cur.right == null) return 1;
+
+        return 1 + Math.min(minDepth(cur.left), minDepth(cur.right));
     }
 
     public int maxDepth(Node cur){

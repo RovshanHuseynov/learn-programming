@@ -11,11 +11,9 @@ public class Main {
         tree.addLoop(9);
         tree.addLoop(0);
         tree.addLoop(16);*/
-        tree.addLoop(7);
-        tree.addLoop(5);
-        tree.addLoop(13);
-        tree.addLoop(9);
-        tree.addLoop(17);
+
+
+        System.out.println("minDepth: " + tree.minDepth(tree.getHead()));
 
         tree.printPreOrderTraversal(tree.getHead());
         System.out.println();
