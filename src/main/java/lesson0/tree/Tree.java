@@ -152,7 +152,13 @@ public class Tree {
 
     public int maxDepth(Node cur){
         // https://www.eolymp.com/en/problems/10110
-        return 0;
+
+        if(cur == null) return 0;
+        if(cur.left == null && cur.right == null) return 1;
+
+        else if(cur.left != null && cur.right != null) return 1 + Math.max(maxDepth(cur.left), maxDepth(cur.right));
+        else if(cur.left != null) return 1 + maxDepth(cur.left);
+        else return 1 + maxDepth(cur.right);
     }
 
     public Node invert(Node cur){
