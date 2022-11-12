@@ -168,7 +168,14 @@ public class Tree {
 
     public boolean isSymmetric(Node cur){
         // https://www.eolymp.com/en/problems/10115
-        return false;
+
+        if(cur == null) return true;
+        if(cur.left == null && cur.right == null) return true;
+        if(cur.left != null && cur.right == null) return false;
+        if(cur.left == null && cur.right != null) return false;
+        if(cur.left.left == null && cur.right.right != null) return false;
+        if(cur.left.left != null && cur.right.right == null) return false;
+        return isSymmetric(cur.left) && isSymmetric(cur.right);
     }
 
     public boolean isBalanced(Node cur){
