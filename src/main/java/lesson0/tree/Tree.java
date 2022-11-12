@@ -173,7 +173,15 @@ public class Tree {
 
     public boolean isBalanced(Node cur){
         // https://www.eolymp.com/en/problems/10112
-        return false;
+
+        if(cur == null) return true;
+        if(cur.left == null && cur.right != null &&
+                (cur.right.left != null || cur.right.right != null)) return false;
+
+        if(cur.right == null && cur.left != null &&
+                (cur.left.left != null || cur.left.right != null)) return false;
+
+        return isBalanced(cur.left) && isBalanced(cur.right);
     }
 
     public boolean isSame(Node cur1, Node cur2){

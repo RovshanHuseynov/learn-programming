@@ -15,11 +15,13 @@ public class Main {
         tree.addLoop(3);
         tree.addLoop(10);
         tree.addLoop(1);
+        tree.addLoop(4);
         tree.addLoop(11);
         tree.addLoop(12);
 
         System.out.println("minDepth: " + tree.minDepth(tree.getHead()));
         System.out.println("maxDepth: " + tree.maxDepth(tree.getHead()));
+        System.out.println("isBalanced: " + tree.isBalanced(tree.getHead()));
 
         tree.printPreOrderTraversal(tree.getHead());
         System.out.println();
