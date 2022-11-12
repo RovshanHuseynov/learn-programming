@@ -175,10 +175,11 @@ public class Tree {
         // https://www.eolymp.com/en/problems/10112
 
         if(cur == null) return true;
-        if(cur.left == null && cur.right != null &&
+        if(cur.left == null && cur.right == null) return true;
+        if(cur.left == null &&
                 (cur.right.left != null || cur.right.right != null)) return false;
 
-        if(cur.right == null && cur.left != null &&
+        if(cur.right == null &&
                 (cur.left.left != null || cur.left.right != null)) return false;
 
         return isBalanced(cur.left) && isBalanced(cur.right);
