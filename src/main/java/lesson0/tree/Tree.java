@@ -173,8 +173,10 @@ public class Tree {
         if(cur.left == null && cur.right == null) return true;
         if(cur.left != null && cur.right == null) return false;
         if(cur.left == null && cur.right != null) return false;
+        if(cur.left != null && cur.right != null && cur.left.value != cur.right.value) return false;
         if(cur.left.left == null && cur.right.right != null) return false;
         if(cur.left.left != null && cur.right.right == null) return false;
+        if(cur.left.left != null && cur.right.right != null && cur.left.left.value != cur.right.right.value) return false;
         return isSymmetric(cur.left) && isSymmetric(cur.right);
     }
 
