@@ -1,5 +1,8 @@
 package lesson0.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Tree {
     private Node head;
 
@@ -178,6 +181,30 @@ public class Tree {
         if(cur.left.left != null && cur.right.right == null) return false;
         if(cur.left.left != null && cur.right.right != null && cur.left.left.value != cur.right.right.value) return false;
         return isSymmetric(cur.left) && isSymmetric(cur.right);
+    }
+
+    public boolean isSymmetricWithQueue(){
+        if(head == null) return true;
+        if(head.left == null && head.right == null) return true;
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(head.left);
+        q.add(head.right);
+
+        while(!q.isEmpty()){
+            Node tempLeft = q.remove();
+            Node tempRight = q.remove();
+
+            if(tempLeft == null && tempRight == null) continue;
+            if( (tempLeft == null) != (tempRight == null) ) return false;
+            if(tempLeft.value != tempRight.value) return false;
+
+            q.add(tempLeft.left);
+            q.add(tempRight.right);
+            q.add(tempLeft.right);
+            q.add(tempRight.left);
+        }
+        return true;
     }
 
     public boolean isBalanced(Node cur){

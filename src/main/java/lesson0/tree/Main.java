@@ -24,6 +24,7 @@ public class Main {
         System.out.println("maxDepth: " + tree.maxDepth(tree.getHead()));
         System.out.println("isBalanced: " + tree.isBalanced(tree.getHead()));
         System.out.println("isSymmetric: " + tree.isSymmetric(tree.getHead()));
+        System.out.println("isSymmetricWithQueue: " + tree.isSymmetricWithQueue());
 
         tree.printPreOrderTraversal(tree.getHead());
         System.out.println();
