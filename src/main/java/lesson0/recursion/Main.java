@@ -11,6 +11,8 @@ public class Main {
         System.out.println(f.fibonacci(5));
         System.out.println(f.fibonacci(10));
         System.out.println(f.fibonacci(30));
-        System.out.println(f.fibonacci(100));
+        System.out.println(f.fibonacci(35));
+        System.out.println(f.fibonacci(40));
+        System.out.println(f.fibonacci(45));
     }
 }
