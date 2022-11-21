@@ -14,7 +14,6 @@ public class Fibonacci {
 
     public long fiboMemo(int n){
         if(memoization.size() > n) return memoization.get(n);
-
         long result = fiboMemo(n - 1) + fiboMemo(n - 2);
         memoization.add(result);
         return result;
