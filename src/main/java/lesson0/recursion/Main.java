@@ -1,7 +1,5 @@
 package lesson0.recursion;
 
-import java.math.BigInteger;
-
 public class Main {
     public static void main(String[] args) {
         /*Fibonacci f = new Fibonacci();
@@ -19,13 +17,13 @@ public class Main {
         //System.out.println("Factorial Memoized 10000: " + f.fiboMemo(10000)); // StackOverflowError
 
         /*Factorial f = new Factorial();
-        System.out.println("Factorial 1: " + f.factorialRecursion(new BigInteger("1")));
-        System.out.println("Factorial 5: " + f.factorialRecursion(new BigInteger("5")));
-        System.out.println("Factorial 20: " + f.factorialRecursion(new BigInteger("20")));
-        System.out.println("Factorial 50: " + f.factorialRecursion(new BigInteger("50")));
-        System.out.println("Factorial 200: " + f.factorialRecursion(new BigInteger("200")));
-        System.out.println("Factorial 1000: " + f.factorialRecursion(new BigInteger("1000")));
-        System.out.println("Factorial 5000: " + f.factorialRecursion(new BigInteger("5000")));*/
+        System.out.println("Factorial 1: " + f.factorialRecursion(1));
+        System.out.println("Factorial 5: " + f.factorialRecursion(5));
+        System.out.println("Factorial 20: " + f.factorialRecursion(20));
+        System.out.println("Factorial 50: " + f.factorialRecursion(50));
+        System.out.println("Factorial 200: " + f.factorialRecursion(200));
+        System.out.println("Factorial 1000: " + f.factorialRecursion(1000));
+        System.out.println("Factorial 5000: " + f.factorialRecursion(5000));*/
 
         Power p = new Power();
         System.out.println(p.power(2,10));
