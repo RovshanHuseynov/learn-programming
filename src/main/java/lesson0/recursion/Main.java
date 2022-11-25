@@ -30,5 +30,6 @@ public class Main {
         System.out.println(p.power(5,5));
         System.out.println(p.power(8,4));
         System.out.println(p.power(6,4));
+        System.out.println(p.power(7,3));
     }
 }
