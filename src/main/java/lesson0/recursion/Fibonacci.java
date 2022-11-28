@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Fibonacci {
     List<Long> memoization = new ArrayList<>(Arrays.asList(0L, 1L, 1L));
+    List<Long> bottomUp = new ArrayList<>(Arrays.asList(0L, 1L, 1L));
 
     public long fibo(int n){
         if(n == 1 || n == 2) return 1;
@@ -13,9 +14,14 @@ public class Fibonacci {
     }
 
     public long fiboMemo(int n){
+        System.out.println(n + " " + memoization.toString());
         if(memoization.size() > n) return memoization.get(n);
         long result = fiboMemo(n - 1) + fiboMemo(n - 2);
         memoization.add(result);
         return result;
+    }
+
+    public long fiboBottomUp(int n){
+        return 0;
     }
 }
