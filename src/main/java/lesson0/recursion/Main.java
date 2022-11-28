@@ -1,9 +1,10 @@
 package lesson0.recursion;
 
 public class Main {
+    // source: https://www.youtube.com/watch?v=vYquumk4nWw
     public static void main(String[] args) {
-        /*Fibonacci f = new Fibonacci();
-        System.out.println("Factorial 5: " + f.fibo(5));
+        Fibonacci f = new Fibonacci();
+        /*System.out.println("Factorial 5: " + f.fibo(5));
         System.out.println("Factorial 10: " + f.fibo(20));
         System.out.println("Factorial 35: " + f.fibo(35));
         System.out.println("Factorial 45: " + f.fibo(45));    // so much time
@@ -16,6 +17,11 @@ public class Main {
         System.out.println("Factorial Memoized 100: " + f.fiboMemo(100));
         System.out.println("Factorial Memoized 1000: " + f.fiboMemo(1000));
         System.out.println("Factorial Memoized 10000: " + f.fiboMemo(10000)); // StackOverflowError*/
+        System.out.println("------------------------------------");
+        System.out.println("Factorial bottom up 3: " + f.fiboBottomUp(3));
+        System.out.println("Factorial bottom up 8: " + f.fiboBottomUp(8));
+        System.out.println("Factorial bottom up 7: " + f.fiboBottomUp(7));
+        System.out.println("Factorial bottom up 20: " + f.fiboBottomUp(20));
 
         /*Factorial f = new Factorial();
         System.out.println("Factorial 1: " + f.factorialRecursion(1));

@@ -22,6 +22,15 @@ public class Fibonacci {
     }
 
     public long fiboBottomUp(int n){
-        return 0;
+        System.out.println("array in the beginning of finding " + n + "th fibo" + bottomUp.toString());
+        if(n == 1 || n == 2) return bottomUp.get(n);
+        else if(bottomUp.size() > n) return bottomUp.get(n);
+
+        for(int i=bottomUp.size(); i<=n; i++){
+            System.out.println(i + "th fibo = " + bottomUp.get(i-1) + " + " + bottomUp.get(i-2));
+            bottomUp.add(bottomUp.get(i-1) + bottomUp.get(i-2));
+        }
+        System.out.println("array in the end of finding " + n + "th fibo" + bottomUp.toString());
+        return bottomUp.get(n);
     }
 }
