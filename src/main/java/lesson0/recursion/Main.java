@@ -23,7 +23,8 @@ public class Main {
         System.out.println("Factorial bottom up 7: " + f.fiboBottomUp(7));
         System.out.println("Factorial bottom up 20: " + f.fiboBottomUp(20));
 
-        /*Factorial f = new Factorial();
+        /*System.out.println("------------------------------------");
+        Factorial f = new Factorial();
         System.out.println("Factorial 1: " + f.factorialRecursion(1));
         System.out.println("Factorial 5: " + f.factorialRecursion(5));
         System.out.println("Factorial 20: " + f.factorialRecursion(20));
@@ -32,10 +33,15 @@ public class Main {
         System.out.println("Factorial 1000: " + f.factorialRecursion(1000));
         System.out.println("Factorial 5000: " + f.factorialRecursion(5000));*/
 
-        /*Power p = new Power();
+        /*System.out.println("------------------------------------");
+        Power p = new Power();
         System.out.println(p.power(2,10));
         System.out.println(p.power(5,5));
         System.out.println(p.power(8,4));
         System.out.println(p.power(6,4));*/
+
+        /*System.out.println("------------------------------------");
+        TowerOfHanoi t = new TowerOfHanoi();
+        t.TOH(3, 1,2,3);*/
     }
 }
