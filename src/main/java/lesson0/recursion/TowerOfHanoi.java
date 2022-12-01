@@ -14,4 +14,8 @@ public class TowerOfHanoi {
             TOH(n-1, B, A, C);
         }
     }
+
+    public int TOH_count(int n, int A, int B, int C){
+        return 2*n;
+    }
 }

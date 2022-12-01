@@ -40,8 +40,10 @@ public class Main {
         System.out.println(p.power(8,4));
         System.out.println(p.power(6,4));*/
 
-        /*System.out.println("------------------------------------");
+        System.out.println("------------------------------------");
         TowerOfHanoi t = new TowerOfHanoi();
-        t.TOH(3, 1,2,3);*/
+        t.TOH(3, 1,2,3);
+        System.out.println("------------------------------------");
+        System.out.println("TOH_count: " + t.TOH_count(25, 1,2,3));
     }
 }
