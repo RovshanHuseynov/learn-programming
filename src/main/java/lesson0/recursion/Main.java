@@ -45,5 +45,6 @@ public class Main {
         t.TOH(3, 1,2,3);
         System.out.println("------------------------------------");
         System.out.println("TOH_count: " + t.TOH_count(25, 1,2,3));
+        System.out.println("TOH_count: " + t.TOH_count(50, 1,2,3));
     }
 }
