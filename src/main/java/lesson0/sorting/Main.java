@@ -1,6 +1,4 @@
-package lesson0.graph;
-
-import lesson0.sorting.QuickSort;
+package lesson0.sorting;
 
 public class Main {
     public static void main(String[] args) {
