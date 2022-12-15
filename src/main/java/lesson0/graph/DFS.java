@@ -47,6 +47,12 @@ public class DFS {
             arr[y][x] = 1;
         }
         dfsWithStack();
+        System.out.println();
+
+        for(int i=1; i<=n; i++){
+            used[i] = false;
+        }
+        dfsRecursion(1);
     }
 
     public static void dfsWithStack(){
@@ -63,6 +69,17 @@ public class DFS {
                     stack.push(i);
                     used[i] = true;
                 }
+            }
+        }
+    }
+
+    public static void dfsRecursion(int node){
+        System.out.print(node + " ");
+        used[node] = true;
+
+        for(int i=1; i<=n; i++){
+            if(!used[i] && arr[node][i] == 1){
+                dfsRecursion(i);
             }
         }
     }
