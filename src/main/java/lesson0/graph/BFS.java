@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class BFS {
     // source: https://www.youtube.com/watch?v=pcKY4hjDrxk
     /*
-    input:
+    example1:
     7 6
     1 4
     1 5
@@ -15,6 +15,22 @@ public class BFS {
     2 7
     2 6
     2 3
+    */
+    /*
+    10 13
+    1 4
+    3 4
+    3 10
+    1 2
+    2 3
+    3 9
+    5 6
+    2 5
+    2 8
+    2 7
+    5 8
+    5 7
+    7 8
     */
     static int[][] arr;
     static boolean[] used;
@@ -37,10 +53,12 @@ public class BFS {
     public static void bfs(){
         Queue<Integer> queue = new LinkedList<>();
         queue.add(1);
+        used[1] = true;
 
         while (!queue.isEmpty()){
             int top = queue.poll();
-            for(int i=1; i<=n; i++){
+            System.out.print(top + " ");
+            for(int i=top+1; i<=n; i++){
                 if(!used[i] && arr[top][i] == 1){
                     queue.add(i);
                     used[i] = true;
