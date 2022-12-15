@@ -1,11 +1,12 @@
 package lesson0.graph;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class DFS {
     // source: https://www.youtube.com/watch?v=pcKY4hjDrxk
     /*
-    input:
+    example1:
     7 6
     1 4
     1 5
@@ -13,6 +14,22 @@ public class DFS {
     2 7
     2 6
     2 3
+    */
+    /*
+    10 13
+    1 4
+    3 4
+    3 10
+    1 2
+    2 3
+    3 9
+    5 6
+    2 5
+    2 8
+    2 7
+    5 8
+    5 7
+    7 8
     */
     static int[][] arr;
     static boolean[] used;
@@ -29,15 +46,23 @@ public class DFS {
             arr[x][y] = 1;
             arr[y][x] = 1;
         }
-        dfs(1);
+        dfsWithStack();
     }
 
-    public static void dfs(int node){
-        for(int i=1; i<=n; i++){
-            if(!used[i] && arr[node][i] == 1){
-                used[i] = true;
-                System.out.print(i + " ");
-                dfs(node);
+    public static void dfsWithStack(){
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        used[1] = true;
+
+        while (!stack.isEmpty()){
+            int top = stack.pop();
+            System.out.print(top + " ");
+
+            for(int i=1; i<=n; i++){
+                if(!used[i] && arr[top][i] == 1){
+                    stack.push(i);
+                    used[i] = true;
+                }
             }
         }
     }
