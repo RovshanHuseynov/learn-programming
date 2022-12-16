@@ -58,28 +58,27 @@ public class DFS {
     public static void dfsWithStack(){
         Stack<Integer> stack = new Stack<>();
         stack.push(1);
-        used[1] = true;
 
         while (!stack.isEmpty()){
-            int top = stack.pop();
-            System.out.print(top + " ");
+            int from = stack.pop();
+            System.out.print(from + " ");
+            used[from] = true;
 
-            for(int i=1; i<=n; i++){
-                if(!used[i] && arr[top][i] == 1){
-                    stack.push(i);
-                    used[i] = true;
+            for(int to=1; to<=n; to++){
+                if(!used[to] && arr[from][to] == 1){
+                    stack.push(to);
                 }
             }
         }
     }
 
-    public static void dfsRecursion(int node){
-        System.out.print(node + " ");
-        used[node] = true;
+    public static void dfsRecursion(int from){
+        System.out.print(from + " ");
+        used[from] = true;
 
-        for(int i=1; i<=n; i++){
-            if(!used[i] && arr[node][i] == 1){
-                dfsRecursion(i);
+        for(int to=1; to<=n; to++){
+            if(!used[to] && arr[from][to] == 1){
+                dfsRecursion(to);
             }
         }
     }
