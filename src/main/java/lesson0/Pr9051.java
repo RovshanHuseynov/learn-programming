@@ -16,16 +16,16 @@ public class Pr9051 {
             this.z = 0;
         }
 
-        public Vector(Vector v) {
-            this.x = v.getX();
-            this.y = v.getY();
-            this.z = v.getZ();
-        }
-
         public Vector(int x, int y, int z){
             this.x = x;
             this.y = y;
             this.z = z;
+        }
+
+        public Vector(Vector v) {
+            this.x = v.getX();
+            this.y = v.getY();
+            this.z = v.getZ();
         }
 
         public void setX(int x) {
