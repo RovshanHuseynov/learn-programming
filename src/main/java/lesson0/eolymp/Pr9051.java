@@ -1,4 +1,4 @@
-package lesson0;
+package lesson0.eolymp;
 
 public class Pr9051 {
     public static void main(String[] args) {
