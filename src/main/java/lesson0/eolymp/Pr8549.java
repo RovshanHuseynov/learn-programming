@@ -9,16 +9,22 @@ public class Pr8549 {
         Scanner in = new Scanner(System.in);
         List<Integer> primeList = new ArrayList<>();
         List<Integer> luckyNumbersList = new ArrayList<>();
-        for(int i=1; i<=100; i++){
+        for(int i=1; i<=1000; i++){
             if(isPrime(i)) primeList.add(i);
         }
         //System.out.println(primeList.size());
         //System.out.println(primeList);
 
-        for(int i=0; i < primeList.size(); i++) {
-            for (int j = 0; j < primeList.size(); j++) {
-                for (int k = 0; k < primeList.size(); k++) {
-                    if(i!=j && j!=k && i!=k) luckyNumbersList.add(primeList.get(i)*primeList.get(j)*primeList.get(k));
+        int cnt;
+        for(int i=1; i<=1000; i++){
+            cnt = 0;
+            for(int j=0; j<primeList.size(); j++){
+                if(j > i) break;
+                else if(i % primeList.get(j) == 0) cnt++;
+
+                if(cnt == 3){
+                    luckyNumbersList.add(i);
+                    break;
                 }
             }
         }
