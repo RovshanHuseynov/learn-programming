@@ -2,7 +2,8 @@ package lesson0.eolymp;
 
 public class Pr9070 {
     public static void main(String[] args) {
-        System.out.println();
+        Triangle triangle = new Triangle();
+        triangle.Out();
     }
 
     static class Triangle {
