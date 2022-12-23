@@ -11,33 +11,33 @@ public class Pr9051 {
         private int x,y,z;
 
         public Vector(){
-            this.x = 0;
-            this.y = 0;
-            this.z = 0;
+            x = 0;
+            y = 0;
+            z = 0;
         }
 
-        public Vector(int x, int y, int z){
-            this.x = x;
-            this.y = y;
-            this.z = z;
+        public Vector(int X, int Y, int Z){
+            x = X;
+            y = Y;
+            z = Z;
         }
 
         public Vector(Vector v) {
-            this.x = v.getX();
-            this.y = v.getY();
-            this.z = v.getZ();
+            x = v.getX();
+            y = v.getY();
+            z = v.getZ();
         }
 
-        public void setX(int x) {
-            this.x = x;
+        public void setX(int X) {
+            x = X;
         }
 
-        public void setY(int y) {
-            this.y = y;
+        public void setY(int Y) {
+            y = Y;
         }
 
-        public void setZ(int z) {
-            this.z = z;
+        public void setZ(int Z) {
+            z = Z;
         }
 
         public int getX() {

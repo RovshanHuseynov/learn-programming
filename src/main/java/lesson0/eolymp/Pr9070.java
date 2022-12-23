@@ -29,12 +29,20 @@ public class Pr9070 {
 
         public void Out(){}
 
-        public double area(){}
+        public double area(){
+            return 0;
+        }
 
-        public double perimeter(){}
+        public double perimeter(){
+            return 0;
+        }
 
-        public double inscribedRadius(){}
+        public double inscribedRadius(){
+            return 0;
+        }
 
-        public double describedRadius(){}
+        public double describedRadius(){
+            return 0;
+        }
     }
 }
