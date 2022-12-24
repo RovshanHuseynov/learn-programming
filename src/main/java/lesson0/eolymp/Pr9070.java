@@ -2,7 +2,8 @@ package lesson0.eolymp;
 
 public class Pr9070 {
     public static void main(String[] args) {
-        Triangle triangle = new Triangle();
+        Triangle triangle = new Triangle(-3,6,-3,2,3,2);
+        System.out.println(triangle.perimeter());
         triangle.Out();
     }
 
@@ -27,14 +28,16 @@ public class Pr9070 {
             this.y3 = y3;
         }
 
-        public void Out(){}
+        public void Out(){
+            System.out.println(x1 + " " + x2 + " " + y1 + " " + y2 + " " + x3 + " " + y3);
+        }
 
         public double area(){
             return 0;
         }
 
         public double perimeter(){
-            return 0;
+            return length(x1, y1, x2, y2) + length(x2, y2, x3, y3) + length(x3, y3, x1, y1);
         }
 
         public double inscribedRadius(){
@@ -43,6 +46,10 @@ public class Pr9070 {
 
         public double describedRadius(){
             return 0;
+        }
+
+        private double length(int x1, int y1, int x2, int y2){
+            return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
         }
     }
 }
