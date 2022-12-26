@@ -20,6 +20,16 @@ public class Main {
         tree.addLoop(9);
         //tree.addLoop(12);
 
+        Tree tree2 = new Tree();
+        tree2.addLoop(5);
+        tree2.addLoop(3);
+        tree2.addLoop(10);
+        tree2.addLoop(1);
+        tree2.addLoop(4);
+        tree2.addLoop(11);
+        tree2.addLoop(9);
+        System.out.println(tree.isSame(tree.getHead(), tree2.getHead()));
+
         System.out.println("minDepth: " + tree.minDepth(tree.getHead()));
         System.out.println("maxDepth: " + tree.maxDepth(tree.getHead()));
         System.out.println("isBalanced: " + tree.isBalanced(tree.getHead()));

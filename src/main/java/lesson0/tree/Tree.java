@@ -223,6 +223,9 @@ public class Tree {
 
     public boolean isSame(Node cur1, Node cur2){
         // https://www.eolymp.com/en/problems/10108
-        return false;
+
+        if(cur1 != cur2) return false;
+        if(cur1 == null && cur2 == null) return true;
+        return isSame(cur1.left, cur2.left) && isSame(cur1.right, cur2.right);
     }
 }
