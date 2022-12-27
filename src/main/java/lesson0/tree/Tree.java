@@ -227,5 +227,6 @@ public class Tree {
         if(cur1 != cur2) return false;
         if(cur1 == null && cur2 == null) return true;
         return isSame(cur1.left, cur2.left) && isSame(cur1.right, cur2.right);
+
     }
 }
