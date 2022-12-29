@@ -221,11 +221,11 @@ public class Tree {
         return isBalanced(cur.left) && isBalanced(cur.right);
     }
 
-    public boolean isSame(Node cur1, Node cur2){
+    public boolean isSame(Node tree1, Node tree2){
         // https://www.eolymp.com/en/problems/10108
 
-        if(cur1 != cur2) return false;
-        if(cur1 == null && cur2 == null) return true;
-        return isSame(cur1.left, cur2.left) && isSame(cur1.right, cur2.right);
+        if(tree1 == null && tree2 == null) return true;
+        if(!tree1.equals(tree2)) return false;
+        return isSame(tree1.left, tree2.left) && isSame(tree1.right, tree2.right);
     }
 }
