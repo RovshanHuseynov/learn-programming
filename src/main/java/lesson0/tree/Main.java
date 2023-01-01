@@ -23,6 +23,7 @@ public class Main {
         Tree tree2 = new Tree();
         tree2.addLoop(5);
         tree2.addLoop(3);
+        tree2.addLoop(7);
         //tree2.addLoop(10);
         //tree2.addLoop(1);
         //tree2.addLoop(4);
