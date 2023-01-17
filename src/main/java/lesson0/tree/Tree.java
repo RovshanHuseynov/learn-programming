@@ -166,7 +166,16 @@ public class Tree {
 
     public Node invert(Node cur){
         // https://www.eolymp.com/en/problems/10114
-        return null;
+
+        if(cur != null) {
+            Node temp = cur.left;
+            cur.left = cur.right;
+            cur.right = temp;
+
+            invert(cur.left);
+            invert(cur.right);
+        }
+        return cur;
     }
 
     public boolean isSymmetric(Node cur){
