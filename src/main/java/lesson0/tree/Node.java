@@ -19,15 +19,19 @@ public class Node {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Node)) return false;
-        Node that = (Node) obj;
+    public boolean equals(Object o) {
+        if(o == null) return false;
+        if (this == o) return true;
+        if (!(o instanceof Node)) return false;
+
+        Node that = (Node) o;
         return this.value == that.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        int result = 17;
+        result = result * 31 + value;
+        return result;
     }
 }
