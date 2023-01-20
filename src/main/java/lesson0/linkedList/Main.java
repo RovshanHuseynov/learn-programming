@@ -25,6 +25,8 @@ public class Main {
         linkedListInteger.printLoop();
         linkedListInteger.reverseLoop();
         linkedListInteger.printLoop();
+        linkedListInteger.reverseRecursion(linkedListInteger.getHead());
+        linkedListInteger.printLoop();
 
 
         System.out.println("--------------------------------------");

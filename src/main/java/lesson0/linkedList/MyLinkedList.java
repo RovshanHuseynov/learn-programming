@@ -136,7 +136,7 @@ public class MyLinkedList<T> {
     }
 
     public void reverseLoop(){
-        System.out.println("reverse");
+        System.out.print("reverseLoop: ");
         // https://www.eolymp.com/en/problems/10046
 
         Node<T> cur = head;
@@ -150,9 +150,21 @@ public class MyLinkedList<T> {
             cur = next;
         }
         head = prev;
+        System.out.println("done");
     }
 
-    public void reverseRecursion(){
+    public void reverseRecursion(Node<T> cur){
+        if(cur == head){
+            System.out.print("reverseRecursion: ");
+        }
+
+        if(cur.next != null) {
+            reverseRecursion(cur.next);
+        }
+
+        if(cur.next == null){
+            System.out.println("done");
+        }
     }
 
     public int sum(){
