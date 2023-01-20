@@ -14,7 +14,7 @@ public class Main {
         linkedListInteger.addLast(2);
         linkedListInteger.sizeLoop();
         System.out.println("sizeRecursion: " + linkedListInteger.sizeRecursion(linkedListInteger.getHead()));
-        linkedListInteger.addLast(10);
+       linkedListInteger.addLast(10);
 
         System.out.println("sizeRecursion: " + linkedListInteger.sizeRecursion(linkedListInteger.getHead()));
         System.out.println("sum: " + linkedListInteger.sum());
@@ -25,9 +25,10 @@ public class Main {
         linkedListInteger.printLoop();
         linkedListInteger.reverseLoop();
         linkedListInteger.printLoop();
-        linkedListInteger.reverseRecursion(linkedListInteger.getHead());
+        linkedListInteger.reverseRecursionV1(linkedListInteger.getHead());
         linkedListInteger.printLoop();
-
+        linkedListInteger.reverseRecursionV2(linkedListInteger.getHead());
+        linkedListInteger.printLoop();
 
         System.out.println("--------------------------------------");
         MyLinkedList<String> linkedListString = new MyLinkedList<>();
@@ -57,7 +58,6 @@ public class Main {
 
         System.out.println("getTail: " + linkedListString.getTail());
         System.out.println("getHead: " + linkedListString.getHead());
-
 
         System.out.println("--------------------------------------");
         MyLinkedList<Integer> test1 = new MyLinkedList<>();

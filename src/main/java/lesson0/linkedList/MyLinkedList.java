@@ -153,18 +153,39 @@ public class MyLinkedList<T> {
         System.out.println("done");
     }
 
-    public void reverseRecursion(Node<T> cur){
-        if(cur == head){
-            System.out.print("reverseRecursion: ");
-        }
-
-        if(cur.next != null) {
-            reverseRecursion(cur.next);
-        }
-
-        if(cur.next == null){
+    public void reverseRecursionV1(Node<T> cur){
+        if(cur == null) return;
+        else if(cur.next == null) {
+            head = cur;
             System.out.println("done");
+            return;
         }
+        else if(cur == head) System.out.print("reverseRecursion: ");
+
+        if(cur.next != null) reverseRecursionV1(cur.next);
+        else head = cur;
+
+        cur.next.next = cur;
+        cur.next = null;
+    }
+
+    public void reverseRecursionV2(Node<T> cur){
+        if(cur == null) return;
+        else if(cur == head) System.out.print("reverseRecursion: ");
+
+        if(cur.next != null) reverseRecursionV2(cur.next);
+        else head = cur;
+
+        Node<T> prev = cur;
+        cur = cur.next;
+        Node<T> next = null;
+        if(cur != null) next = cur.next;
+
+        if(next != null) next.next = cur;
+        if(cur != null) cur.next = prev;
+        prev.next = null;
+
+        if(cur == null) System.out.println("done");
     }
 
     public int sum(){
