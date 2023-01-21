@@ -130,7 +130,7 @@ public class Tree {
 
         if(cur == null) return 0;
         if(cur.left == null &&
-                cur.right == null) return cur.value + sumLeaves(cur.left) + sumLeaves(cur.right);
+                cur.right == null) return cur.value;
         else return sumLeaves(cur.left) + sumLeaves(cur.right);
     }
 
