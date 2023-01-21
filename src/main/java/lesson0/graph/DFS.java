@@ -58,15 +58,16 @@ public class DFS {
     public static void dfsWithStack(){
         Stack<Integer> stack = new Stack<>();
         stack.push(1);
+        used[1] = true;
 
         while (!stack.isEmpty()){
             int from = stack.pop();
             System.out.print(from + " ");
-            used[from] = true;
 
             for(int to=1; to<=n; to++){
                 if(!used[to] && arr[from][to] == 1){
                     stack.push(to);
+                    used[to] = true;
                 }
             }
         }

@@ -56,12 +56,12 @@ public class BFS {
         used[1] = true;
 
         while (!queue.isEmpty()){
-            int top = queue.poll();
-            System.out.print(top + " ");
-            for(int i=top+1; i<=n; i++){
-                if(!used[i] && arr[top][i] == 1){
-                    queue.add(i);
-                    used[i] = true;
+            int from = queue.poll();
+            System.out.print(from + " ");
+            for(int to=1; to<=n; to++){
+                if(!used[to] && arr[from][to] == 1){
+                    queue.add(to);
+                    used[to] = true;
                 }
             }
         }
