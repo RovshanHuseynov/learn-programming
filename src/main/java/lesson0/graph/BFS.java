@@ -5,6 +5,10 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class BFS {
+    /*
+    Breadth-first search is a graph traversal algorithm that starts traversing
+    the graph from the root node and explores all the neighboring nodes.
+     */
     // source: https://www.youtube.com/watch?v=pcKY4hjDrxk
     /*
     example1:
