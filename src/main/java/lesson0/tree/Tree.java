@@ -10,6 +10,7 @@ public class Tree {
     // binary tree - each node has no more than two child nodes
     // binary search tree - left node is less than root node
     // which it less than all the right nodes
+    // if it is a tree, (number of edges)/2 must be equal to n-1 (n = total number of nodes)
     private Node head;
 
     public void addLoop(int value){
