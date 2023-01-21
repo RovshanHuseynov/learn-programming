@@ -4,6 +4,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Tree {
+    // if it is a tree, one node can be reached from only one node
+    // if there is a cycle, it is not a tree
+    // if it is a tree, there is a way to go from root node to every node (connected)
+    // binary tree - each node has no more than two child nodes
+    // binary search tree - left node is less than root node
+    // which it less than all the right nodes
     private Node head;
 
     public void addLoop(int value){
@@ -109,13 +115,13 @@ public class Tree {
         return min;
     }
 
-    public int sumLeft(Node cur){
+    public int sumLeftLeaves(Node cur){
         // https://www.eolymp.com/en/problems/10111
 
         if(cur != null &&
                 cur.left != null &&
                 cur.left.left == null &&
-                cur.left.right == null) return cur.left.value + sumLeft(cur.left) + sumLeft(cur.right);
+                cur.left.right == null) return cur.left.value + sumLeftLeaves(cur.left) + sumLeftLeaves(cur.right);
         return 0;
     }
 
