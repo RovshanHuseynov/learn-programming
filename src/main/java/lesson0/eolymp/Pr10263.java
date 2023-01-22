@@ -44,6 +44,13 @@ Petr Mendel 1990
                         .thenComparing(Person::getYear, (int1, int2) -> int2.compareTo(int1))
                 )
                 .forEach(System.out::println);
+
+        System.out.println("fourth way");
+        list.stream().sorted(Comparator.comparing(Person::getSurname)
+                        .thenComparing(Person::getName)
+                        .thenComparing(Person::getYear, (int1, int2) -> int2 - int1)
+                )
+                .forEach(System.out::println);
     }
 }
 
