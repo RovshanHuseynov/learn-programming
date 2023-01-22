@@ -6,6 +6,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Pr10263 {
+/*
+6
+Mila Catron 1977
+Ivan Mendel 1956
+Mihail Egorov 1980
+Eric Catron 1977
+Mihail Egorov 1988
+Petr Mendel 1990
+*/
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
@@ -24,8 +33,16 @@ public class Pr10263 {
 
         System.out.println("second way");
         list.stream().sorted(Comparator.comparing(Person::getSurname)
-                .thenComparing(Person::getName)
-                .thenComparing(Person::getYear, Comparator.reverseOrder()))
+                        .thenComparing(Person::getName)
+                        .thenComparing(Person::getYear, Comparator.reverseOrder())
+                )
+                .forEach(System.out::println);
+
+        System.out.println("third way");
+        list.stream().sorted(Comparator.comparing(Person::getSurname)
+                        .thenComparing(Person::getName)
+                        .thenComparing(Person::getYear, (int1, int2) -> int2.compareTo(int1))
+                )
                 .forEach(System.out::println);
     }
 }
