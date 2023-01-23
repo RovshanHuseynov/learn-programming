@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Pr9911 {
     public static void main(String[] args) {
+        // TODO fix it
         Scanner in = new Scanner(System.in);
         long a = in.nextLong();
         long b = in.nextLong();
