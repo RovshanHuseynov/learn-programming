@@ -7,12 +7,12 @@ public class Pr9950 {
         Scanner in = new Scanner(System.in);
         long m = in.nextLong();
         int ans = 0;
-        long i = 1L;
+        long hasil = 1;
 
-        while(true){
-            if(i*i <= m) ans++;
-            else break;
-            i++;
+        while(true) {
+            hasil*=2;
+            if(hasil > m) break;
+            ans++;
         }
         System.out.println(ans);
     }
