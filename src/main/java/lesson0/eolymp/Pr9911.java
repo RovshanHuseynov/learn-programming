@@ -7,11 +7,12 @@ public class Pr9911 {
         Scanner in = new Scanner(System.in);
         long a = in.nextLong();
         long b = in.nextLong();
+        long temp;
 
         if(a > b) {
-            a = a + b;
-            a = a - b;
-            b = a - b;
+            temp = a;
+            a = b;
+            b = temp;
         }
 
         int cnt=0;
