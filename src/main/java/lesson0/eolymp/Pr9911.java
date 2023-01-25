@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Pr9911 {
     public static void main(String[] args) {
-        // TODO fix it
         Scanner in = new Scanner(System.in);
         long a = in.nextLong();
         long b = in.nextLong();
@@ -14,8 +13,8 @@ public class Pr9911 {
             a = a - b;
             b = a - b;
         }
-        if(a % 2 != 0) a++;
-        if(b % 2 != 0) b--;
+        a = a + a%2;
+        b = b - b%2;
         System.out.println((b-a)/2+1);
     }
 }
