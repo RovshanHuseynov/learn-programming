@@ -13,8 +13,11 @@ public class Pr9911 {
             a = a - b;
             b = a - b;
         }
-        a = a + a%2;
-        b = b - b%2;
-        System.out.println((b-a)/2+1);
+
+        int cnt=0;
+        for(long i=a; i<=b; i++){
+            if(i%2==0) cnt++;
+        }
+        System.out.println(cnt);
     }
 }
