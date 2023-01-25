@@ -3,10 +3,12 @@ package lesson0.eolymp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Pr10506 {
     static int n;
     static List<List<Integer>> arr;
+    static Stack<Integer> stack = new Stack<>();
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
@@ -34,20 +36,28 @@ public class Pr10506 {
         int count = 0;
         for(int i=1; i<=n; i++){
             if(!used[i]) {
-                dfs(i, used);
+                stack = new Stack<>();
+                stack.push(i);
+                used[i] = true;
+                dfs(used);
                 count++;
             }
         }
         System.out.println(count);
     }
 
-    private static void dfs(int from, boolean [] used){
-        used[from] = true;
-        int to;
+    private static void dfs(boolean [] used){
+        int from,to;
 
-        for(int i=0; i<arr.get(from).size(); i++){
-            to = arr.get(from).get(i);
-            if(!used[to]) dfs(to, used);
+        while (!stack.empty()){
+            from = stack.pop();
+            for (int i = 0; i < arr.get(from).size(); i++) {
+                to = arr.get(from).get(i);
+                if (!used[to]) {
+                    used[to] = true;
+                    stack.push(to);
+                }
+            }
         }
     }
 }
