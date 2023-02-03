@@ -7,7 +7,7 @@ public class Pr9630 {
     int n = in.nextInt();
     int m = in.nextInt();
 
-    for(int i=0; i<m; i++){
+    /*for(int i=0; i<m; i++){
 
-    }
+    }*/
 }
