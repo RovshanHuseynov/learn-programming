@@ -13,23 +13,28 @@ public class Pr9630 {
 
 class Testt {
     Queue<Cell> queue;
-    Scanner in = new Scanner(System.in);
-    int n = in.nextInt();
-    boolean[][] used = new boolean[n+1][n+1];
-    int m = in.nextInt();
+    Scanner in;
+    int n;
+    int m;
+    boolean[][] used;
 
-     public void run(){
+    public void run() {
+        in = new Scanner(System.in);
+        n = in.nextInt();
+        m = in.nextInt();
+        used = new boolean[n+1][n+1];
+
         for (int i = 0; i < m; i++) {
             queue = new LinkedList<>();
             bfs(new Cell(in.nextInt(), in.nextInt(), 0));
         }
 
-        int cnt=0;
+        int cnt = 0;
         for (int i = 1; i <= n; i++) {
             //System.out.println();
             for (int j = 1; j <= n; j++) {
                 //System.out.print(used[i][j] + " ");
-                if(!used[i][j]) cnt++;
+                if (!used[i][j]) cnt++;
             }
         }
         System.out.println(cnt);
