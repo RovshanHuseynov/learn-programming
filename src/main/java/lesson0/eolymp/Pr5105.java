@@ -11,3 +11,4 @@ public class Pr5105 {
         System.out.println(a.add(b));
     }
 }
+
