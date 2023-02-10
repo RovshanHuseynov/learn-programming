@@ -22,3 +22,4 @@ public class Pr9911 {
         System.out.println(cnt);
     }
 }
+
