@@ -1,7 +1,6 @@
 package lesson0.eolymp;
 
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Pr8760 {
     static int [][] arr;
@@ -20,23 +19,18 @@ public class Pr8760 {
             arr[x][y] = 1;
             arr[y][x] = 1;
         }
-        dfs(in.nextInt());
+        int start = in.nextInt();
+        used[start] = true;
+        dfs(start);
     }
 
-    private static void dfs(int start){
-        Stack<Integer> s = new Stack<>();
-        used[start] = true;
-        s.push(start);
-        int from;
+    private static void dfs(int from) {
+        System.out.print(from + " ");
 
-        while(!s.empty()){
-            from = s.pop();
-            System.out.print(from + " ");
-            for(int to=1; to<=n; to++){
-                if(arr[from][to] == 1 && !used[to]){
-                    s.push(to);
-                    used[to] = true;
-                }
+        for (int to = 1; to <= n; to++) {
+            if (arr[from][to] == 1 && !used[to]) {
+                used[to] = true;
+                dfs(to);
             }
         }
     }
