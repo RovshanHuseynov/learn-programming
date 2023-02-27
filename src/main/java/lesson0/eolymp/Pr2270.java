@@ -45,7 +45,6 @@ public class Pr2270 {
         used[from] = true;
         int len = a.get(from).size(), to;
         if(len == 0) {
-            //System.out.println("len=0 " + from + " " + parent[from]);
             while(parent[from] != from) {
                 parent[from] = src[from];
                 from = src[from];
@@ -66,7 +65,6 @@ public class Pr2270 {
                 List<Integer> ans = new ArrayList<>();
                 ans.add(from);
                 while(from != to){
-                    //System.out.print(src[from] + " ");
                     ans.add(src[from]);
                     from = src[from];
                 }
