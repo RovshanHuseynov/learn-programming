@@ -11,6 +11,7 @@ public class Pr855 {
         if(n%2==0) print("", n);
     }
 
+
     // isValid 0 - not Valid and not possible to be Valid
     // isValid 1 - not Valid, but possible to be Valid
     // isValid 2 - Valid
