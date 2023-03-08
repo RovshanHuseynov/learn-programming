@@ -291,4 +291,20 @@ public class MyLinkedList<T> {
         }
         System.out.println();
     }
+
+    public Node<T> deleteFirstElement(Node<T> head, int element){
+        Node<T> cur = head;
+        Node<T> prev = null;
+
+        while(cur != null){
+            if(cur.value.equals(element)){
+                if(prev == null) return null;
+                else prev.next = cur.next;
+            }
+            prev = cur;
+            cur = cur.next;
+        }
+
+        return head;
+    }
 }
