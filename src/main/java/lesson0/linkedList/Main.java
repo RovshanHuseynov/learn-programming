@@ -2,7 +2,7 @@ package lesson0.linkedList;
 
 public class Main {
     public static void main(String[] args) {
-        /*MyLinkedList<Integer> linkedListInteger = new MyLinkedList<>();
+        MyLinkedList<Integer> linkedListInteger = new MyLinkedList<>();
         linkedListInteger.sizeLoop();
         System.out.println("sizeRecursion: " + linkedListInteger.sizeRecursion(linkedListInteger.getHead()));
         linkedListInteger.addLast(4);
@@ -88,12 +88,12 @@ public class Main {
         test4.addLast(6);
         test4.addLast(8);
         test4.addLast(10);
-        test3.printWithGivenHead(test3.merge(test3.getHead(), test4.getHead()));*/
+        test3.printWithGivenHead(test3.merge(test3.getHead(), test4.getHead()));
 
         System.out.println("--------------------------------------");
         MyLinkedList<Integer> test5 = new MyLinkedList<>();
-        //test5.addLast(1);
-        //test5.addLast(2);
+        test5.addLast(1);
+        test5.addLast(2);
         test5.addLast(5);
         test5.printLoop();
         test5.deleteFirstElement(test5.getHead(), 5);
