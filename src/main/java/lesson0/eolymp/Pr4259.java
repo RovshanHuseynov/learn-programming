@@ -11,12 +11,14 @@ public class Pr4259 {
         int n = in.nextInt();
         int min = Integer.MAX_VALUE;
         int t, p, top;
+        boolean flag = false;
         for(int i=0; i<n; i++){
             t = in.nextInt();
             if(t == 1){
                 p = in.nextInt();
                 s.push(p);
-                if(p < min) min = p;
+
+                min = Math.min(p, min);
             }
             else if (t == 2) {
                 top = s.peek();
@@ -24,9 +26,10 @@ public class Pr4259 {
                 //System.out.print("print ");
                 //s.stream().forEach(val -> System.out.print(val + " "));
                 //System.out.println();
-                if(top == min) min = s.stream().min(Comparator.comparingInt(o -> o)).orElse(0);
+                flag = (top == min);
             }
             else {
+                if(flag) min = s.stream().mapToInt(v -> v).min().orElse(min);
                 System.out.println(min);
             }
         }
