@@ -26,7 +26,7 @@ public class Pr4259 {
                 //System.out.print("print ");
                 //s.stream().forEach(val -> System.out.print(val + " "));
                 //System.out.println();
-                flag = (top == min);
+                if(top == min) flag = true;
             }
             else {
                 if(flag) min = s.stream().mapToInt(v -> v).min().orElse(min);
