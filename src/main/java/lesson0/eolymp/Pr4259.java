@@ -1,6 +1,5 @@
 package lesson0.eolymp;
 
-import java.util.Comparator;
 import java.util.Scanner;
 import java.util.Stack;
 
