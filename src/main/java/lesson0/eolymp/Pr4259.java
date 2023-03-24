@@ -8,7 +8,7 @@ public class Pr4259 {
         // solution video: https://www.youtube.com/watch?v=ufwPuyxkNVE
         Scanner in = new Scanner(System.in);
         Stack<Integer> m = new Stack<>(); // main stack
-        Stack<Integer> s = new Stack<>(); // supportion stack
+        Stack<Integer> s = new Stack<>(); // supporting stack
         int n = in.nextInt();
         int t, val, top;
         for(int i=0; i<n; i++){
