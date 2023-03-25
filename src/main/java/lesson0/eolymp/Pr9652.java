@@ -7,13 +7,13 @@ public class Pr9652 {
         Scanner in = new Scanner(System.in);
         MyLong myLong = new MyLong(in.nextLong());
         myLong.Add(in.nextLong());
-        System.out.println(myLong.toString());
+        System.out.println(myLong);
     }
 }
 
 class MyLong
 {
-    private long a;
+    private final long a;
     MyLong(long a) {
         this.a = a;
     }
