@@ -98,6 +98,14 @@ public class Main {
         test5.printLoop();
         test5.deleteFirstElement(test5.getHead(), 5);
         test5.printLoop();
+
+        MyLinkedList<Integer> test6 = new MyLinkedList<>();
+        test6.addLast(1);
+        test6.addLast(2);
+        test6.addLast(3);
+        test6.addLast(4);
+        test6.addLast(5);
+        test6.MiddleElement(test6.getHead());
     }
 
     public static void printLinkedList(MyLinkedList<String> linkedList){

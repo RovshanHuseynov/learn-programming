@@ -307,4 +307,27 @@ public class MyLinkedList<T> {
 
         return head;
     }
+
+    public Node<T> MiddleElement(Node<T> head){
+        int cnt = 0;
+        Node<T> cur = head;
+        while(cur != null){
+            cnt++;
+            cur = cur.next;
+        }
+
+        if(cnt%2 == 1) cnt++;
+        int mid = cnt / 2;
+        cnt = 1;
+        cur = head;
+        while(cur != null){
+            cnt++;
+            cur = cur.next;
+
+            if(cnt == mid) {
+                return cur;
+            }
+        }
+        return head;
+    }
 }
