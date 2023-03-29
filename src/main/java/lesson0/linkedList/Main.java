@@ -14,7 +14,7 @@ public class Main {
         linkedListInteger.addLast(2);
         linkedListInteger.sizeLoop();
         System.out.println("sizeRecursion: " + linkedListInteger.sizeRecursion(linkedListInteger.getHead()));
-       linkedListInteger.addLast(10);
+        linkedListInteger.addLast(10);
 
         System.out.println("sizeRecursion: " + linkedListInteger.sizeRecursion(linkedListInteger.getHead()));
         System.out.println("sum: " + linkedListInteger.sum());
@@ -106,6 +106,15 @@ public class Main {
         test6.addLast(4);
         test6.addLast(5);
         test6.MiddleElement(test6.getHead());
+
+        MyLinkedList<Integer> test7 = new MyLinkedList<>();
+        test7.addLast(1);
+        test7.addLast(2);
+        test7.addLast(3);
+        test7.addLast(4);
+        test7.addLast(5);
+        test7.addLast(3);
+        System.out.println(test7.CycleLength(test7.getHead()));
     }
 
     public static void printLinkedList(MyLinkedList<String> linkedList){

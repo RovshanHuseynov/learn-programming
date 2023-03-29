@@ -309,6 +309,7 @@ public class MyLinkedList<T> {
     }
 
     public Node<T> MiddleElement(Node<T> head){
+        // https://www.eolymp.com/en/problems/10380
         int cnt = 0;
         Node<T> cur = head;
         while(cur != null){
@@ -329,5 +330,31 @@ public class MyLinkedList<T> {
             }
         }
         return head;
+    }
+
+    public int CycleLength(Node<T> head) {
+        // https://www.eolymp.com/en/problems/10763
+        Set<Node<T>> set = new HashSet<>();
+        Node<T> cur = head;
+        int cnt = -1;
+        Node<T> cycleBegin;
+
+        while(cur != null){
+            if(set.contains(cur)){
+                cycleBegin = cur;
+                cnt = 1;
+                while(true){
+                    cur = cur.next;
+                    if(cycleBegin.equals(cur)){
+                        return cnt;
+                    }
+                    cnt++;
+                }
+            } else{
+                set.add(cur);
+                cur = cur.next;
+            }
+        }
+        return cnt;
     }
 }

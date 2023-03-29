@@ -33,7 +33,7 @@ public class Node<T> {
     public int hashCode() {
         int result = 17;
         result = result * 31 + value.hashCode();
-        result = result * 31 + (next == null ? 0 : next.hashCode());
+        //result = result * 31 + (next == null ? 0 : next.hashCode());
         return result;
     }
 }
