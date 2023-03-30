@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Pr10379 {
     public static void main(String[] args) {
+        // solution tutorial: https://www.youtube.com/watch?v=Z6idIicFDOE
         Scanner in = new Scanner(System.in);
         String command;
         int curObject, cntCurObject, max = 0, sizeOfMax, poppedObject;
