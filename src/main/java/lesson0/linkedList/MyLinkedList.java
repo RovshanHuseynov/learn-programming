@@ -334,6 +334,37 @@ public class MyLinkedList<T> {
         return cnt;
     }
 
+    public int DistanceToCycle2(Node<T> head){
+        // https://www.eolymp.com/en/problems/10802
+        if(head == null) return -1;
+        boolean hasCycle = false;
+        Node<T> slow = head;
+        Node<T> fast = head;
+
+        while(fast.next != null && fast.next.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+
+            if(fast.equals(slow)){
+                hasCycle = true;
+                break;
+            }
+        }
+
+        if(!hasCycle) return -1;
+        else {
+            int cnt = 0;
+            Node<T>  cur = head;
+
+            while(!cur.equals(slow)){
+                cnt++;
+                cur = cur.next;
+                slow = slow.next;
+            }
+            return cnt;
+        }
+    }
+
     public Node<T> MiddleElement(Node<T> head){
         // https://www.eolymp.com/en/problems/10380
         int cnt = 0;
