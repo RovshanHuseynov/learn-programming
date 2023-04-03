@@ -299,7 +299,10 @@ public class MyLinkedList<T> {
         while(cur != null){
             if(cur.value.equals(element)){
                 if(prev == head) return null;
-                else prev.next = cur.next;
+                else {
+                    prev.next = cur.next;
+                    break;
+                }
             }
             prev = cur;
             cur = cur.next;
