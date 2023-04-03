@@ -293,6 +293,7 @@ public class MyLinkedList<T> {
     }
 
     public Node<T> deleteFirstElement(Node<T> head, int element){
+        // https://www.eolymp.com/en/problems/10803
         Node<T> cur = head;
         Node<T> prev = head;
 
@@ -309,6 +310,28 @@ public class MyLinkedList<T> {
         }
 
         return head;
+    }
+
+    public int DistanceToCycle(Node<T> head){
+        // https://www.eolymp.com/en/problems/10802
+        int cnt = 0;
+        Set<T> set = new HashSet<>();
+        Node<T> cur = head;
+
+        while(cur != null){
+            if(set.contains(cur.value)){
+                while(head != cur){
+                    cnt++;
+                    head = head.next;
+                }
+                break;
+            } else set.add(cur.value);
+
+            cur = cur.next;
+        }
+
+        if(cnt == 0) cnt--;
+        return cnt;
     }
 
     public Node<T> MiddleElement(Node<T> head){
