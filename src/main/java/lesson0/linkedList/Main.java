@@ -95,9 +95,8 @@ public class Main {
         test5.addLast(1);
         test5.addLast(2);
         test5.addLast(5);
-        test5.printLoop();
-        test5.DeleteFirstElement(test5.getHead(), 5);
-        test5.printLoop();
+        test5.addLast(1);
+        System.out.println(test5.DeleteFirstElement(test5.getHead(), 1));
 
         MyLinkedList<Integer> test6 = new MyLinkedList<>();
         test6.addLast(1);

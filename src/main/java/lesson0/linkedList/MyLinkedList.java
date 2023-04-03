@@ -295,11 +295,11 @@ public class MyLinkedList<T> {
     public Node<T> DeleteFirstElement(Node<T> head, int element){
         // https://www.eolymp.com/en/problems/10803
         Node<T> cur = head;
-        Node<T> prev = head;
+        Node<T> prev = null;
 
         while(cur != null){
             if(cur.value.equals(element)){
-                if(prev == head) return null;
+                if(prev == null) return head.next;
                 else {
                     prev.next = cur.next;
                     break;
