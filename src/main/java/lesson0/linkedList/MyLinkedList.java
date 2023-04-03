@@ -292,7 +292,7 @@ public class MyLinkedList<T> {
         System.out.println();
     }
 
-    public Node<T> deleteFirstElement(Node<T> head, int element){
+    public Node<T> DeleteFirstElement(Node<T> head, int element){
         // https://www.eolymp.com/en/problems/10803
         Node<T> cur = head;
         Node<T> prev = head;
