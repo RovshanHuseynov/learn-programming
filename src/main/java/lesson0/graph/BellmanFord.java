@@ -3,7 +3,7 @@ package lesson0.graph;
 import java.util.Scanner;
 
 public class BellmanFord {
-    static int n, start;
+    static int n, m, start;
     static int [][] a;
     static Pair [] edges;
     static int [] dis;
@@ -16,10 +16,13 @@ public class BellmanFord {
          7 vertices,so we will call relax method for 6 times
          Complexity of Bellman Ford Algorithm is O(n*m) - n is number of vertices and m is number of edges
          which is in complete graph is O(n3) - n is number of vertices
+         is there is a cycle in graph and total weight of the cycle is negative, Bellman Ford will not work correctly there
+         to find whether there is a negative cycle is graph, after finishing relax n-1 times, we can do one more relax and
+         check whether distances are changed. If changed it means there a negative weighted cycle in the graph
          */
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
-        int m = in.nextInt();
+        m = in.nextInt();
         start = in.nextInt();
         edges = new Pair[m+1];
         a = new int[n+1][n+1];
@@ -41,10 +44,8 @@ public class BellmanFord {
         dis[start] = 0;
 
         for(int i=1; i<n; i++){
-            // relax all the edges
-            for(int j=1; j<=m; j++){
-                relax(edges[j].u, edges[j].v);
-            }
+            // relax all the edges n-1 times
+            relax();
         }
 
         for(int i=1; i<=n; i++){
@@ -52,10 +53,15 @@ public class BellmanFord {
         }
     }
 
-    static void relax(int from, int to){
-        if (dis[to] > dis[from] + a[from][to]) {
-            dis[to] = dis[from] + a[from][to];
-            parent[to] = from;
+    static void relax(){
+        int from, to;
+        for(int i=1;  i<=m; i++) {
+            from = edges[i].u;
+            to = edges[i].v;
+            if (dis[to] > dis[from] + a[from][to]) {
+                dis[to] = dis[from] + a[from][to];
+                parent[to] = from;
+            }
         }
     }
 }
