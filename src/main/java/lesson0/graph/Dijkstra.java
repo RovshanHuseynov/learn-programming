@@ -36,7 +36,6 @@ public class Dijkstra {
         }
 
         dis[start] = 0;
-        relax(start);
         dijkstra();
 
         for(int i=1; i<=n; i++){
@@ -55,6 +54,7 @@ public class Dijkstra {
     }
 
     private static void dijkstra(){
+        // finds minimum distance node (vertex) to call relax
         int min;
         int node;
         while(true){
