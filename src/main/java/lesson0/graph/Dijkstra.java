@@ -11,6 +11,8 @@ public class Dijkstra {
     static int MAX = Integer.MAX_VALUE;
     public static void main(String[] args) {
         // video tutorial: https://www.youtube.com/watch?v=GazC3A4OQTE
+        // Complexity of Bellman Ford Algorithm is O(n*m) - n is number of vertices and m is number of edges
+        // which is in complete graph is O(n2) - n is number of vertices
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
         int m = in.nextInt();
@@ -19,13 +21,13 @@ public class Dijkstra {
         used = new boolean[n+1];
         dis = new int[n+1];
         parent = new int[n+1];
-        int x,y,z;
+        int u,v,z;
         for(int i=0; i<m; i++){
-            x = in.nextInt();
-            y = in.nextInt();
+            u = in.nextInt();
+            v = in.nextInt();
             z = in.nextInt();
-            a[x][y] = z;
-            a[y][x] = z;
+            a[u][v] = z;
+            a[v][u] = z;
         }
 
         for(int i=1; i<=n; i++){
@@ -45,7 +47,7 @@ public class Dijkstra {
     private static void relax(int from){
         used[from] = true;
         for(int to=1; to<=n; to++){
-            if(!used[to] && a[from][to] > 0 && dis[from] + a[from][to] < dis[to]){
+            if(!used[to] && a[from][to] > 0 && dis[to] > dis[from] + a[from][to]){
                 dis[to] = dis[from] + a[from][to];
                 parent[to] = from;
             }
