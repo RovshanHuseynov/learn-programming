@@ -13,6 +13,7 @@ public class Dijkstra {
         // video tutorial: https://www.youtube.com/watch?v=GazC3A4OQTE
         // Complexity of Bellman Ford Algorithm is O(n*m) - n is number of vertices and m is number of edges
         // which is in complete graph is O(n2) - n is number of vertices
+        // If we want to decrease time complexity to O(nlogn), we have to use red-black tree
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
         int m = in.nextInt();
