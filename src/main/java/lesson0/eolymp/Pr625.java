@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Pr625 {
-    static int [][] a;
+    static List<List<Pairr>> a;
     static int [] dis;
     static int [] parent;
     static boolean [] used;
@@ -18,13 +18,14 @@ public class Pr625 {
         m = in.nextInt();
         s = in.nextInt();
         f = in.nextInt();
-        a = new int[n+1][n+1];
+        a = new ArrayList<>(n+1);
         dis = new int[n+1];
         parent = new int[n+1];
         used = new boolean[n+1];
-        for(int i=1; i<=n; i++){
+        for(int i=0; i<=n; i++){
             dis[i] = MAX;
             parent[i] = i;
+            a.add(new ArrayList<>());
         }
 
         int u,v,z;
@@ -32,8 +33,8 @@ public class Pr625 {
             u = in.nextInt();
             v = in.nextInt();
             z = in.nextInt();
-            a[u][v] = z;
-            a[v][u] = z;
+            a.get(u).add(new Pairr(v,z));
+            a.get(v).add(new Pairr(u,z));
         }
 
         dis[s] = 0;
@@ -76,12 +77,23 @@ public class Pr625 {
     }
 
     private static void relax(int from){
+        int to,len = a.get(from).size();
         used[from] = true;
-        for(int to=1; to<=n; to++){
-            if(!used[to] && a[from][to] > 0 && dis[to] > dis[from] + a[from][to]){
-                dis[to] = dis[from] + a[from][to];
+        for(int i=0; i<len; i++){
+            to = a.get(from).get(i).to;
+            if(!used[to] && dis[to] > dis[from] + a.get(from).get(i).z){
+                dis[to] = dis[from] + a.get(from).get(i).z;
                 parent[to] = from;
             }
         }
+    }
+}
+
+class Pairr {
+    int to,z;
+
+    public Pairr(int to, int z){
+        this.to = to;
+        this.z = z;
     }
 }
