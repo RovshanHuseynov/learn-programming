@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Pr10082 {
     static int n, m, s, d;
-    //static boolean [] used;
     static int [] dis;
     static List<List<Integer>> a;
 
@@ -15,7 +14,6 @@ public class Pr10082 {
         s = in.nextInt();
         d = in.nextInt();
         n = 2 * n;
-        //used = new boolean[n+1];
         dis = new int[n+1];
         a = new ArrayList<>(n+1);
         for(int i=0; i<=n; i++){
@@ -46,7 +44,7 @@ public class Pr10082 {
         Queue<Integer> queue = new LinkedList<>();
         queue.add(start);
         dis[start] = 0;
-        int from, to,len;
+        int from,to,len;
 
         while(!queue.isEmpty()){
             from = queue.poll();
