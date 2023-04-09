@@ -30,10 +30,12 @@ public class Pr10082 {
             a.get(v).add(u);
         }
         bsf();
-        for(int i=1; i<=n; i++){
+        /*for(int i=1; i<=n; i++){
             System.out.print(dis[i] + " ");
         }
-        System.out.println();
+        System.out.println();*/
+        if(dis[d] == 0 || dis[d] %2 == 1) dis[d] = -1;
+        System.out.println(dis[d]);
     }
 
     static void bsf(){
