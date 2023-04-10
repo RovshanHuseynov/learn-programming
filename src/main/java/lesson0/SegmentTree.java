@@ -1,4 +1,4 @@
-package lesson0.eolymp;
+package lesson0;
 
 import java.util.Scanner;
 
