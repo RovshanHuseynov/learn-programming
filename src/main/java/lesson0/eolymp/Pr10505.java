@@ -5,19 +5,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Pr10505 {
-    // https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+    // https://codeforces.com/blog/entry/64903
     static int n;
     static List<List<Integer>> a;
-    static boolean [] used;
-    static boolean [] recursionStack;
+    static int [] color;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
         int m,val;
         a = new ArrayList<>(n+1);
         a.add(new ArrayList<>());
-        used = new boolean[n+1];
-        recursionStack = new boolean[n+1];
+        color = new int[n+1];
         for(int i=1; i<=n; i++){
             a.add(new ArrayList<>());
             m = in.nextInt();
@@ -27,37 +25,28 @@ public class Pr10505 {
             }
         }
 
-        System.out.println(isCyclic());
-    }
-
-    private static boolean isCyclicUtil(int from) {
-        if (recursionStack[from]) return true;
-        if (used[from]) return false;
-
-        used[from] = true;
-        recursionStack[from] = true;
-
-        int len, to;
-        len = a.get(from).size();
-        for (int i = 0; i < len; i++) {
-            to = a.get(from).get(i);
-            if (isCyclicUtil(to)) {
-                return true;
-            }
-        }
-        recursionStack[from] = false;
-        return false;
-    }
-
-    static int isCyclic() {
-        int cnt = 0;
+        int sum = 0;
         for(int i=1; i<=n; i++){
-            if(isCyclicUtil(i)){
-                //return true;
+            sum += dfs(i);
+        }
+        System.out.println(sum);
+    }
+
+    static int dfs(int from){
+        int cnt = 0;
+        color[from] = 1;
+
+        int len = a.get(from).size(),to;
+        for(int i=0; i<len; i++){
+            to = a.get(from).get(i);
+            if(color[to] == 0){
+                dfs(to);
+            } else if(color[to] == 1){
                 cnt++;
+                break;
             }
         }
-        //return false;
+        color[from] = 2;
         return cnt;
     }
 }

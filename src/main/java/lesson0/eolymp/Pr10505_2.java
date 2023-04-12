@@ -5,17 +5,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Pr10505_2 {
-    // https://codeforces.com/blog/entry/64903
+    // https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
     static int n;
     static List<List<Integer>> a;
-    static int [] color;
+    static boolean [] used;
+    static boolean [] recursionStack;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
         int m,val;
         a = new ArrayList<>(n+1);
         a.add(new ArrayList<>());
-        color = new int[n+1];
+        used = new boolean[n+1];
+        recursionStack = new boolean[n+1];
         for(int i=1; i<=n; i++){
             a.add(new ArrayList<>());
             m = in.nextInt();
@@ -25,28 +27,37 @@ public class Pr10505_2 {
             }
         }
 
-        int sum = 0;
-        for(int i=1; i<=n; i++){
-            sum += dfs(i);
-        }
-        System.out.println(sum);
+        System.out.println(isCyclic());
     }
 
-    static int dfs(int from){
-        int cnt = 0;
-        color[from] = 1;
+    private static boolean isCyclicUtil(int from) {
+        if (recursionStack[from]) return true;
+        if (used[from]) return false;
 
-        int len = a.get(from).size(),to;
-        for(int i=0; i<len; i++){
+        used[from] = true;
+        recursionStack[from] = true;
+
+        int len, to;
+        len = a.get(from).size();
+        for (int i = 0; i < len; i++) {
             to = a.get(from).get(i);
-            if(color[to] == 0){
-                dfs(to);
-            } else if(color[to] == 1){
-                cnt++;
-                break;
+            if (isCyclicUtil(to)) {
+                return true;
             }
         }
-        color[from] = 2;
+        recursionStack[from] = false;
+        return false;
+    }
+
+    static int isCyclic() {
+        int cnt = 0;
+        for(int i=1; i<=n; i++){
+            if(isCyclicUtil(i)){
+                //return true;
+                cnt++;
+            }
+        }
+        //return false;
         return cnt;
     }
 }
