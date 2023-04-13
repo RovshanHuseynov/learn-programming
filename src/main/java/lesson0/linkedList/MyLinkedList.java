@@ -414,4 +414,21 @@ public class MyLinkedList<T> {
         }
         return cnt;
     }
+
+    public Node<T> removeCycle(Node<T> head){
+        // https://www.eolymp.com/en/problems/10748
+        Set<T> set = new HashSet<>();
+        Node<T> cur = head;
+        set.add(head.value);
+
+        while(cur.next != null){
+            if(set.contains(cur.next.value)){
+                cur.next = null;
+                break;
+            }
+            set.add(cur.value);
+            cur = cur.next;
+        }
+        return head;
+    }
 }

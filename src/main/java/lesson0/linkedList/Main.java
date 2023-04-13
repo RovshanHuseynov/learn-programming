@@ -104,7 +104,7 @@ public class Main {
         test6.addLast(3);
         test6.addLast(4);
         test6.addLast(5);
-        test6.MiddleElement(test6.getHead());
+        System.out.println(test6.MiddleElement(test6.getHead()));
 
         MyLinkedList<Integer> test7 = new MyLinkedList<>();
         test7.addLast(1);
@@ -132,6 +132,15 @@ public class Main {
         test9.addLast(5);
         test9.addLast(3);
         System.out.println(test9.DistanceToCycle2(test9.getHead()));
+
+        MyLinkedList<Integer> test10 = new MyLinkedList<>();
+        test10.addLast(1);
+        test10.addLast(2);
+        test10.addLast(3);
+        test10.addLast(4);
+        test10.addLast(5);
+        test10.addLast(3);
+        System.out.println(test10.removeCycle(test10.getHead()));
     }
 
     public static void printLinkedList(MyLinkedList<String> linkedList){
