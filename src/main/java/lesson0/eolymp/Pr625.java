@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Pr625 {
-    static List<List<Pairr>> a;
+    static List<List<Pair3>> a;
     static int [] dis;
     static int [] parent;
     static boolean [] used;
@@ -33,8 +33,8 @@ public class Pr625 {
             u = in.nextInt();
             v = in.nextInt();
             z = in.nextInt();
-            a.get(u).add(new Pairr(v,z));
-            a.get(v).add(new Pairr(u,z));
+            a.get(u).add(new Pair3(v,z));
+            a.get(v).add(new Pair3(u,z));
         }
 
         dis[s] = 0;
@@ -89,10 +89,10 @@ public class Pr625 {
     }
 }
 
-class Pairr {
+class Pair3 {
     int to,z;
 
-    public Pairr(int to, int z){
+    public Pair3(int to, int z){
         this.to = to;
         this.z = z;
     }
