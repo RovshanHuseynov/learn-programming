@@ -5,7 +5,6 @@ import java.util.*;
 public class Pr10056 {
     static int n,s,d;
     static List<List<Pair2>> a;
-    static boolean [] used;
     static int [] dis;
     public static void main(String[] args) {
         int MAX = Integer.MAX_VALUE;
@@ -15,7 +14,6 @@ public class Pr10056 {
         s = in.nextInt();
         d = in.nextInt();
         a = new ArrayList<>(n+1);
-        used = new boolean[n+1];
         dis = new int[n+1];
         a.add(new ArrayList<>());
         for(int i=1; i<=n; i++){
@@ -40,21 +38,24 @@ public class Pr10056 {
     }
 
     static void bfs(){
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(s);
-        used[s] = true;
+        Deque<Integer> deque = new ArrayDeque<>();
+        deque.addFirst(s);
         dis[s] = 0;
         int from,to,len;
 
-        while(!queue.isEmpty()){
-            from = queue.poll();
+        while(!deque.isEmpty()){
+            from = deque.pollFirst();
             len = a.get(from).size();
-            for(int i=0; i<len; i++){
+            for (int i = 0; i < len; i++) {
                 to = a.get(from).get(i).to;
-                if(!used[to]) {
-                    used[to] = true;
+
+                if(dis[to] > dis[from] + a.get(from).get(i).z) {
                     dis[to] = Math.min(dis[to], dis[from] + a.get(from).get(i).z);
-                    queue.add(to);
+
+                    if (a.get(from).get(i).z == 0)
+                        deque.addFirst(to);
+                    else
+                        deque.addLast(to);
                 }
             }
         }
