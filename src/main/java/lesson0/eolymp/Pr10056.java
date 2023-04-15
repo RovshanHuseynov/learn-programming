@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Pr10056 {
     static int n,s,d;
-    static List<List<Pair2>> a;
+    static List<List<Pair10056>> a;
     static int [] dis;
     public static void main(String[] args) {
         int MAX = Integer.MAX_VALUE;
@@ -25,8 +25,8 @@ public class Pr10056 {
             u = in.nextInt();
             v = in.nextInt();
             z = in.nextInt();
-            a.get(u).add(new Pair2(v,z));
-            a.get(v).add(new Pair2(u,z));
+            a.get(u).add(new Pair10056(v,z));
+            a.get(v).add(new Pair10056(u,z));
         }
         bfs();
 
@@ -62,9 +62,9 @@ public class Pr10056 {
     }
 }
 
-class Pair2 {
+class Pair10056 {
     int to,z;
-    public Pair2(int to, int z){
+    public Pair10056(int to, int z){
         this.to = to;
         this.z = z;
     }

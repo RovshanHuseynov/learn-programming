@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Pr10056_2 {
     static int n,s,d;
     static int MAX = Integer.MAX_VALUE;
-    static List<List<Pair4>> a;
+    static List<List<Pair10056_2>> a;
     static boolean [] used;
     static int [] dis;
     public static void main(String[] args) {
@@ -29,8 +29,8 @@ public class Pr10056_2 {
             u = in.nextInt();
             v = in.nextInt();
             z = in.nextInt();
-            a.get(u).add(new Pair4(v,z));
-            a.get(v).add(new Pair4(u,z));
+            a.get(u).add(new Pair10056_2(v,z));
+            a.get(v).add(new Pair10056_2(u,z));
         }
 
         dis[s] = 0;
@@ -73,9 +73,9 @@ public class Pr10056_2 {
     }
 }
 
-class Pair4 {
+class Pair10056_2 {
     int to,z;
-    public Pair4(int to, int z){
+    public Pair10056_2(int to, int z){
         this.to = to;
         this.z = z;
     }
