@@ -6,19 +6,32 @@ import java.util.Scanner;
 public class Pr9659 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String className;
+        String s, type, pS, pN, pA, tS, tSa;
         ListOfPeople9659 l = new ListOfPeople9659();
         while(in.hasNextLine()){
-            className = in.next();
-            if(className.equals("Person")){
-                Person9659 person = new Person9659(in.next(), in.next(), in.nextInt());
+            s = in.nextLine();
+            //System.out.println("s:" + s);
+            type = s.split(" ")[0];
+            if(type.equals("Person")){
+                pS = s.split(" ")[1];
+                pN = s.split(" ")[2];
+                pA = s.split(" ")[3];
+                Person9659 person = new Person9659(pS,pN,Integer.parseInt(pA));
+                //System.out.println("person:" + person);
                 l.add(person);
-            } else if(className.equals("Teacher")){
-                Teacher9659 teacher = new Teacher9659(in.next(), in.next(), in.nextInt(), in.next(), in.nextInt());
+            } else if(type.equals("Teacher")){
+                pS = s.split(" ")[1];
+                pN = s.split(" ")[2];
+                pA = s.split(" ")[3];
+                tS = s.split(" ")[4];
+                tSa = s.split(" ")[5];
+                Teacher9659 teacher = new Teacher9659(pS,pN,Integer.parseInt(pA),tS,Integer.parseInt(tSa));
+                //System.out.println("teacher: " + teacher);
                 l.add(teacher);
             }
         }
         System.out.println(l.toString());
+        //System.out.println(l.a.size());
     }
 }
 
@@ -32,7 +45,7 @@ class Person9659 {
     }
 
     public String toString(){
-        return Surname + " " + Name + " " + Age;
+        return Surname + " " + Name + " " + Age + "\n";
     }
 }
 
@@ -47,7 +60,7 @@ class Teacher9659 extends Person9659 {
     }
 
     public String toString(){
-        return super.Surname + " " + super.Name + " " + super.Age + " " + Subject + " " + Salary;
+        return super.Surname + " " + super.Name + " " + super.Age + " " + Subject + " " + Salary + "\n";
     }
 }
 
@@ -63,6 +76,10 @@ class ListOfPeople9659{
     }
 
     public String toString(){
-        return a.toString();
+        String ans = "";
+        for(int i=0; i<size(); i++){
+            ans = ans + a.get(i);
+        }
+        return ans;
     }
 }
