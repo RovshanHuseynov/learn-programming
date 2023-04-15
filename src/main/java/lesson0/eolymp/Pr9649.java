@@ -7,7 +7,7 @@ public class Pr9649 {
         Scanner in = new Scanner(System.in);
         int a = in.nextInt();
         int b = in.nextInt();
-        Fraction fraction = new Fraction(new MyLong9649(a), new MyLong9649(b));
+        Fraction9649 fraction = new Fraction9649(new MyLong9649(a), new MyLong9649(b));
         System.out.println(fraction.toString());
     }
 }
@@ -22,11 +22,11 @@ class MyLong9649 {
     }
 }
 
-class Fraction {
+class Fraction9649 {
     MyLong9649 numerator, denominator;
-    public Fraction(){
+    public Fraction9649(){
     }
-    public Fraction(MyLong9649 numerator, MyLong9649 denominator){
+    public Fraction9649(MyLong9649 numerator, MyLong9649 denominator){
         this.numerator = numerator;
         this.denominator = denominator;
     }
