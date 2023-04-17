@@ -30,29 +30,27 @@ public class Pr4448 {
             for(int j=1; j<=8; j++) used[j][rook.j] = 'X';
         }
 
-        /*for(int i=1; i<=8; i++){
+        for(int i=1; i<=8; i++){
             for(int j=1; j<=8; j++){
                 System.out.print(used[i][j]);
             }
             System.out.println();
-        }*/
+        }
 
         if(used[king.i][king.j] == 'X') System.out.println("Checkmate");
-        else { bfs();}
+        else bfs();
     }
 
     private static int getI(int i){
-        //System.out.println("getI " + i + " " + ((int)'8'+1-i));
         return (int)'8'+1-i;
     }
 
     private static int getJ(char c){
-        //System.out.println("getJ " + c + " " + ((int)c-(int)'a'+1));
         return (int)c-(int)'a'+1;
     }
 
-    private static char returnI(int i){
-        return (char)(9-i+48);
+    private static int returnI(int i){
+        return 9-i;
     }
 
     private static char returnJ(int j){
@@ -60,14 +58,14 @@ public class Pr4448 {
     }
 
     private static void bfs(){
-        if(king.i > 1 && king.j > 1 && used[king.i-1][king.j-1] != 'X') System.out.println(returnJ(king.j-1) + "" + returnI(king.i-1)); // yuxari sola
-        else if(king.i > 1 && used[king.i-1][king.j] != 'X') System.out.println(returnJ(king.j) + "" + returnI(king.i-1)); // yuxari
+        if(king.i > 1 && king.j > 1 && used[king.i-1][king.j-1] != 'X')      System.out.println(returnJ(king.j-1) + "" + returnI(king.i-1)); // yuxari sola
+        else if(king.i > 1 && used[king.i-1][king.j] != 'X')                 System.out.println(returnJ(king.j) + "" + returnI(king.i-1)); // yuxari
         else if(king.i > 1 && king.j < 8 && used[king.i-1][king.j+1] != 'X') System.out.println(returnJ(king.j+1) + "" + returnI(king.i-1)); // yuxari saga
-        else if(king.j < 8 && used[king.i][king.j+1] != 'X') System.out.println(returnJ(king.j+1) + "" + returnI(king.i)); // saga
+        else if(king.j < 8 && used[king.i][king.j+1] != 'X')                 System.out.println(returnJ(king.j+1) + "" + returnI(king.i)); // saga
         else if(king.i < 8 && king.j < 8 && used[king.i+1][king.j+1] != 'X') System.out.println(returnJ(king.j+1) + "" + returnI(king.i+1)); // asagi saga
-        else if(king.i < 8 && used[king.i+1][king.j] != 'X') System.out.println(returnJ(king.j) + "" + returnI(king.i+1)); // asagi
+        else if(king.i < 8 && used[king.i+1][king.j] != 'X')                 System.out.println(returnJ(king.j) + "" + returnI(king.i+1)); // asagi
         else if(king.i < 8 && king.j > 1 && used[king.i+1][king.j-1] != 'X') System.out.println(returnJ (king.j-1) + "" + returnI(king.i+1)); // asagi sola
-        else if(king.j > 1 && used[king.i][king.j-1] != 'X') System.out.println(returnJ(king.j-1) + "" + returnI(king.i)); // sola
+        else if(king.j > 1 && used[king.i][king.j-1] != 'X')                 System.out.println(returnJ(king.j-1) + "" + returnI(king.i)); // sola
         else System.out.println("Stalemate");
     }
 }
