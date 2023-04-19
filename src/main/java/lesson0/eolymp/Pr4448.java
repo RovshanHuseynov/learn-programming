@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Pr4448 {
     static char [][] used;
-    Queue<Pair4448> queue = new LinkedList<>();
     static Pair4448 king, rook;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
