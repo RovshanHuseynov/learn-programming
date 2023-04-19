@@ -1,7 +1,5 @@
 package lesson0.eolymp;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 
 public class Pr4448 {
