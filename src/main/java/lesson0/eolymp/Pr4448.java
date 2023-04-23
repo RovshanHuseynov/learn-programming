@@ -21,7 +21,7 @@ public class Pr4448 {
         for(int i=1; i<=n; i++){
             input = in.nextLine();
             rook = new Pair4448(getI(input.charAt(1)), getJ(input.charAt(0)));
-            used[rook.i][rook.j] = 'A';
+            used[rook.i][rook.j] = 'X';
 
             for(int j=1; j<=8; j++) used[rook.i][j] = 'X';
             for(int j=1; j<=8; j++) used[j][rook.j] = 'X';
