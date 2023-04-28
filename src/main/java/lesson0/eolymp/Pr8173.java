@@ -10,25 +10,22 @@ public class Pr8173 {
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         int n,k;
-        Map<Integer, Integer> map;
         for(int i=1; i<=t; i++){
             n = in.nextInt();
-            map = new HashMap<>();
+            Map<Integer, Integer> map = new HashMap<>();
             for(int j=1; j<=n; j++){
                 k = in.nextInt();
                 map.put(k, map.getOrDefault(k,0) + 1);
             }
-            Map<Integer, Integer> finalMap = map;
             int max = map.keySet()
                     .stream()
-                    .reduce((o1,o2) -> Math.max(finalMap.get(o1), finalMap.get(o2)))
+                    .reduce((o1,o2) -> Math.max(map.get(o1), map.get(o2)))
                     .orElse(0);
-
-            Map<Integer, Integer> finalMap1 = map;
+            //System.out.println(max);
 
             System.out.println(map.keySet()
                     .stream()
-                    .filter(val -> finalMap1.get(val) == max)
+                    .filter(val -> map.get(val) == max)
                     .min((Comparator.comparingInt(o -> o)))
                     .orElse(0));
         }
