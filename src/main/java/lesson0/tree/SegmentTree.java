@@ -1,11 +1,11 @@
-package lesson0;
+package lesson0.tree;
 
 import java.util.Scanner;
 
 public class SegmentTree {
     /*
-    6
-    1 3 5 7 9 11
+    5
+    1 3 5 7 9
      */
     // https://www.hackerearth.com/practice/data-structures/advanced-data-structures/segment-trees/tutorial/
 
