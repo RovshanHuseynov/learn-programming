@@ -25,7 +25,7 @@ public class SegmentTree {
 
         build(1, 0, n-1);
         for(int i=1; i<2*n; i++){
-            System.out.println(i + " " + tree[i]);
+            System.out.println("index: " + i + " - value: " + tree[i]);
         }
     }
 
@@ -40,6 +40,6 @@ public class SegmentTree {
         int mid = (l+r)/2;
         build(2*node, l, mid);
         build(2*node+1, mid+1,r);
-        tree[node] = tree[2*node] + tree[2*node+1];
+        tree[node] = Math.min(tree[2*node] , tree[2*node+1]);
     }
 }
