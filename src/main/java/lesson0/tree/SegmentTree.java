@@ -56,7 +56,7 @@ public class SegmentTree {
     }
 
     private static int query(int node, int l, int r, int start, int end){
-        //System.out.println(node + " " + l + " " + r + " " + start + " " + end);
+        //System.out.println("query steps: " + node + " " + l + " " + r + " " + start + " " + end);
         if(start > r || end < l) return Integer.MAX_VALUE;
         if(start <= l && end >= r) return tree[node];
 

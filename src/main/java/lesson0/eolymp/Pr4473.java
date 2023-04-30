@@ -3,21 +3,22 @@ package lesson0.eolymp;
 import java.util.Scanner;
 
 public class Pr4473 {
-    static int[] arr;
+    static int[] a;
+    static int[] tree;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
-        int [] input = new int[n+1];
-        arr = new int[n+1];
-
+        a = new int[n+1];
+        tree = new int[3*n];
         for(int i=1; i<=n; i++){
-            input[i] = in.nextInt();
+            a[i] = in.nextInt();
         }
 
+        build(1, 1, n);
+        /*for(int i=1; i<2*n; i++) {
+            System.out.println(i + " " + tree[i]);
+        }*/
         int x,y;
-
-        build(1, n);
-
         int m = in.nextInt();
         for(int i=0; i<m; i++){
             x = in.nextInt();
@@ -28,17 +29,30 @@ public class Pr4473 {
                 y = x - y;
                 x = x - y;
             }
-            System.out.println(max(x,y));
+            System.out.println(query(1, 1, n, x, y));
         }
     }
 
-    private static void build(int left, int right){
-        int mid = (left + right) / 2;
+    private static void build(int node, int l, int r){
+        //System.out.println("node: " + node + " left: " + l + " right: " + r);
+        if(l > r || r < 1) return;
 
-        //if(left == right)
+        if(l == r){
+            tree[node] = a[l];
+            return;
+        }
+
+        int mid = (l+r)/2;
+        build(2*node, l, mid);
+        build(2*node+1, mid+1,r);
+        tree[node] = Math.max(tree[2*node] , tree[2*node+1]);
     }
 
-    private static int max(int left, int right){
-        return 0;
+    private static int query(int node, int l, int r, int start, int end){
+        if(start > r || end < l) return 0;
+        if(start <= l && end >= r) return tree[node];
+
+        int mid = (l+r)/2;
+        return Math.max(query(2*node, l, mid, start, end), query(2*node+1, mid+1, r,start,end));
     }
 }
