@@ -3,9 +3,18 @@ package lesson0.eolymp;
 import java.util.Scanner;
 
 public class Pr3252 {
+    private static int MOD = 1000000007;
+    private static int n, p, q;
+    private static int [] a;
+    private static int [] t;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
+        n = in.nextInt();
+        a = new int[n];
+        t = new int[2*n];
+        p = 91;
+        q = 47;
+        build(1, 0, n-1);
         int m = in.nextInt();
         char c;
         int p,q;
@@ -13,7 +22,27 @@ public class Pr3252 {
             c = in.next().charAt(0);
             p = in.nextInt();
             q = in.nextInt();
-            System.out.println(c);
+
+            if(c == '!'){
+                // update
+            } else if(c == '?'){
+                // return sum
+            }
         }
     }
+
+    private static void build(int node, int l, int r){
+        if(l > r || r < 0) return;
+        if(l == r){
+            t[node] = a[l];
+            return;
+        }
+
+        int mid = (l+r)/2;
+        build(2*node,l,mid);
+        build(2*node+1,mid+1,r);
+        t[node] = t[2*node] + t[2*node+1];
+    }
+    private static void query(int node, int l, int r){}
+    private static void update(int node, int l, int r, int val){}
 }
