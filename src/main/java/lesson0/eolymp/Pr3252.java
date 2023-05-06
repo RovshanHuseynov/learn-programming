@@ -33,7 +33,7 @@ public class Pr3252 {
                 //System.out.println(Arrays.toString(a));
                 //System.out.println(Arrays.toString(t));
                 //System.out.println();
-            } else if(c == '?'){
+            } else if(c == '?') {
                 // return sum
                 z = query(1,0,n-1,(aa+p)%n,(bb+q)%n);
                 System.out.println(z);
