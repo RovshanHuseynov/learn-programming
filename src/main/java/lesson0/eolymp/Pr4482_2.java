@@ -10,9 +10,9 @@ public class Pr4482_2 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
-        a = new int[n + 1];
-        tGCD = new long[4 * n + 4];
-        tLCM = new long[4 * n + 4];
+        a = new int[n+1];
+        tGCD = new long[4*n+4];
+        tLCM = new long[4*n+4];
         for (int i = 1; i <= n; i++) {
             a[i] = in.nextInt();
         }
@@ -26,7 +26,14 @@ public class Pr4482_2 {
             z = in.nextInt();
 
             if (x == 1) {
-                System.out.println(query(1, 1, n, y, z));
+                long gcd = queryGCD(1,1,n,y,z);
+                long lcm = queryLCM(1,1,n,y,z);
+                //System.out.println(gcd);
+                //System.out.println(lcm);
+
+                if(gcd < lcm) System.out.println("wins");
+                else if(gcd == lcm) System.out.println("draw");
+                else System.out.println("loser");
             } else {
                 // update
                 update(1, 1, n, y, z);
@@ -39,22 +46,32 @@ public class Pr4482_2 {
     private static void build(int node, int l, int r) {
         if (l > r || r < 1) return;
         if (l == r) {
-            t[node] = new Pair4482(a[l]);
+            tGCD[node] = a[l];
+            tLCM[node] = a[l];
             return;
         }
 
         int mid = (l + r) / 2;
         build(2 * node, l, mid);
         build(2 * node + 1, mid + 1, r);
-        t[node] = new Pair4482(t[2 * node], t[2 * node + 1]);
+        tGCD[node] = gcd(tGCD[2*node], tGCD[2*node+1]);
+        tLCM[node] = lcm(tLCM[2*node], tLCM[2*node+1]);
     }
 
-    private static Pair4482 query(int node, int l, int r, int start, int end) {
-        if (r < start || l > end) return new Pair4482();
-        if (l >= start && r <= end) return t[node];
+    private static long queryGCD(int node, int l, int r, int start, int end) {
+        if (r < start || l > end) return 0L;
+        if (l >= start && r <= end) return tGCD[node];
 
         int mid = (l + r) / 2;
-        return new Pair4482(query(2 * node, l, mid, start, end), query(2 * node + 1, mid + 1, r, start, end));
+        return gcd(queryGCD(2*node,l,mid,start,end), queryGCD(2*node+1,mid+1,r,start,end));
+    }
+
+    private static long queryLCM(int node, int l, int r, int start, int end) {
+        if (r < start || l > end) return 0L;
+        if (l >= start && r <= end) return tLCM[node];
+
+        int mid = (l + r) / 2;
+        return lcm(queryLCM(2*node,l,mid,start,end), queryLCM(2*node+1,mid+1,r,start,end));
     }
 
     private static void update(int node, int l, int r, int ind, int val) {
@@ -62,7 +79,8 @@ public class Pr4482_2 {
 
         if (l == r && l == ind) {
             a[l] = val;
-            t[node] = new Pair4482(val);
+            tGCD[node] = val;
+            tLCM[node] = val;
             return;
         }
 
@@ -72,7 +90,8 @@ public class Pr4482_2 {
         } else {
             update(2 * node + 1, mid + 1, r, ind, val);
         }
-        t[node] = new Pair4482(t[2 * node], t[2 * node + 1]);
+        tGCD[node] = gcd(tGCD[2*node], tGCD[2*node+1]);
+        tLCM[node] = lcm(tLCM[2*node], tLCM[2*node+1]);
     }
 
     private static long gcd(long a, long b) {
