@@ -1,6 +1,5 @@
 package lesson0.eolymp;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Pr4481 {
