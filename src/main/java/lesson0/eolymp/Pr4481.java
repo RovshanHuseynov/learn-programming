@@ -11,7 +11,7 @@ public class Pr4481 {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         a = new int[n+1];
-        t = new int[2*n+2];
+        t = new int[4*n+4];
         for (int i = 1; i <= n; i++) {
             a[i] = in.nextInt();
         }
