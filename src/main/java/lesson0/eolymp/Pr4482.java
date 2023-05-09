@@ -1,6 +1,5 @@
 package lesson0.eolymp;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Pr4482 {
@@ -77,13 +76,13 @@ public class Pr4482 {
 }
 
 class Pair4482 {
-    int gcd,lcm;
+    long gcd, lcm;
     public Pair4482(Pair4482 a, Pair4482 b){
         this.gcd = gcd(a.gcd,b.gcd);
         this.lcm = lcm(a.lcm,b.lcm);
     }
 
-    public Pair4482(int a){
+    public Pair4482(long a){
         this.gcd = a;
         this.lcm = a;
     }
@@ -92,7 +91,7 @@ class Pair4482 {
         this(0);
     }
 
-    private static int gcd(int a, int b){
+    private static long gcd(long a, long b){
         while(b!=0){
             a = a%b;
             a = b + a - (b=a);
@@ -100,7 +99,7 @@ class Pair4482 {
         return a;
     }
 
-    private static int lcm(int a, int b){
+    private static long lcm(long a, long b){
         if(a == 0 || b == 0) return Math.max(a,b);
         return a*b/gcd(a,b);
     }
