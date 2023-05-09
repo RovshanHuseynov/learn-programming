@@ -8,25 +8,29 @@ public class Pr2941 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
+        int q = in.nextInt();
         a = new int[n+1];
         t = new long[5*n+5];
         for(int i=1; i<=n; i++){
             a[i] = in.nextInt();
         }
         build(1,1,n);
-        int q = in.nextInt();
+        //System.out.println(Arrays.toString(t));
+        //System.out.println(Arrays.toString(a));
         char c;
-        int f,t;
+        int f,tt;
         for(int i=1; i<=q; i++){
             c = in.next().charAt(0);
             f = in.nextInt();
-            t = in.nextInt();
+            tt = in.nextInt();
 
             if(c == '?'){
-                if(f > t) f = t + f - (t=f);
-                System.out.println(query(1,1,n,f,t));
+                if(f > tt) f = tt + f - (tt=f);
+                System.out.println(query(1,1,n,f,tt));
             } else {
-                update(1,1,n,f,t);
+                update(1,1,n,f,tt);
+                //System.out.println(Arrays.toString(t));
+                //System.out.println(Arrays.toString(a));
             }
         }
     }
@@ -53,10 +57,10 @@ public class Pr2941 {
     }
 
     private static void update(int node, int l, int r, int ind, int val){
-        if(l > r || r < 0) return;
+        if(l > r || r < 1) return;
         if(l == r && l == ind) {
-            a[l] += val;
-            t[node] += val;
+            a[l] = val;
+            t[node] = val;
             return;
         }
 
