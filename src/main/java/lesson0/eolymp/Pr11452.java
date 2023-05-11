@@ -34,10 +34,7 @@ public class Pr11452 {
                 dfs(i);
         }
 
-        System.out.println(Arrays.stream(dis, 1, n).max().orElse(1));
-
-        /*System.out.println(IntStream.rangeClosed(1,n)
-                .reduce((i,j) -> Math.max(dis[i], dis[j])).orElse(1));*/
+        System.out.println(Arrays.stream(dis, 1, n).max().orElse(0));
     }
 
     static void dfs(int from){
