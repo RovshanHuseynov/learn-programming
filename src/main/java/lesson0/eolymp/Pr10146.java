@@ -21,17 +21,24 @@ class TreeNode10146 {
     }
 
     public TreeNode10146 Prev(TreeNode10146 tree){
-        TreeNode10146 cur = tree;
-        while(true){
-            tree = tree.parent;
-            if(tree != null && tree.val <= cur.val){
-                break;
+        if(tree != null && tree.left != null){
+            TreeNode10146 cur = tree.left;
+            while(cur.right != null){
+                cur = cur.right;
             }
-            else if(tree == null){
-                break;
+            return cur;
+        } else {
+            TreeNode10146 cur = tree;
+            while (true) {
+                tree = tree.parent;
+                if (tree != null && tree.val <= cur.val) {
+                    break;
+                } else if (tree == null) {
+                    break;
+                }
             }
+            return tree;
         }
-        return tree;
     }
 
     public TreeNode10146 Next(TreeNode10146 tree){
