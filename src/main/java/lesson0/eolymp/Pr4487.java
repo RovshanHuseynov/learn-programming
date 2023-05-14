@@ -40,11 +40,11 @@ public class Pr4487 {
         build(2*node, l, mid);
         build(2*node+1, mid+1, r);
         int maxPre=t[2*node].maxPre;
-        if(t[2*node].maxPre == mid-l+1 && a[mid] <= a[mid+1]){
+        if(a[mid] <= a[mid+1] && t[2*node].maxPre == mid-l+1){
             maxPre = t[2*node].max + t[2*node+1].maxPre;
         }
         int maxPost=t[2*node+1].maxPost;
-        if(t[2*node+1].maxPost == r-mid && a[mid] <= a[mid+1]){
+        if(a[mid] <= a[mid+1] && t[2*node+1].maxPost == r-mid){
             maxPost = t[2*node+1].max + t[2*node].maxPost;
         }
         int max= Math.max(t[2*node].max, t[2*node+1].max);
