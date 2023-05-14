@@ -30,15 +30,8 @@ public class Pr5084 {
     }
 
     private static int binarySearch(int l, int r, int val, int[] a){
-        //System.out.println(l + " " + r + " " + val);
-        if(r<1 || l>r || l>a.length || a[l]>=val) {
-            //System.out.println(l + " " + r + " stop");
-            return 0;
-        }
-        if(a[r]<val) {
-            //System.out.println(l + " " + r + " result " + (r-l+1));
-            return r-l+1;
-        }
+        if(r<1 || l>r || l>a.length || a[l]>=val) return 0;
+        if(a[r]<val) return r-l+1;
 
         int mid = (l+r)/2;
         return binarySearch(l,mid,val,a) + binarySearch(mid+1,r,val,a);
