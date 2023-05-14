@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class Pr5084_2 {
     private static int n;
     private static int[] a;
-    private static ArrayList[] t;
+    private static List[] t;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
