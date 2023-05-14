@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Pr4487 {
-    static int n;
     static int [] a;
     static Node4487 [] t;
     public static void main(String[] args) {
@@ -36,30 +35,30 @@ public class Pr4487 {
 
         if(l == r){
             t[node] = new Node4487(node, l,r,1,1,1);
-            //t[node] = new Node4487(1,1,1);
             return;
         }
 
         int mid = (l+r)/2;
         build(2*node, l, mid);
         build(2*node+1, mid+1, r);
-        int maxPre=t[2*node].maxPre;
-        if(a[mid] <= a[mid+1] && t[2*node].maxPre == mid-l+1){
-            //maxPre = t[2*node].max + t[2*node+1].maxPre;
-            maxPre = t[2*node].maxPost + t[2*node+1].maxPre;
+        t[node] = generate(node, t[2*node], t[2*node+1], l, r);
+    }
+
+    private static Node4487 generate(int node, Node4487 left, Node4487 right, int l, int r){
+        int mid = (l+r)/2;
+        int maxPre=left.maxPre;
+        if(a[mid] <= a[mid+1] && left.maxPre == mid-l+1){
+            maxPre = left.maxPost + right.maxPre;
         }
-        int maxPost=t[2*node+1].maxPost;
-        if(a[mid] <= a[mid+1] && t[2*node+1].maxPost == r-mid){
-            //maxPost = t[2*node].maxPost + t[2*node+1].max;
-            maxPost = t[2*node].maxPost + t[2*node+1].maxPre;
+        int maxPost=right.maxPost;
+        if(a[mid] <= a[mid+1] && right.maxPost == r-mid){
+            maxPost = left.maxPost + right.maxPre;
         }
-        int max= Math.max(t[2*node].max, t[2*node+1].max);
-        //int max= Math.max(maxPre, maxPost);
+        int max= Math.max(left.max, right.max);
         if(a[mid] <= a[mid+1]){
-            max = Math.max(max, t[2*node].maxPost + t[2*node+1].maxPre);
+            max = Math.max(max, left.maxPost + right.maxPre);
         }
-        t[node] = new Node4487(node,l,r,maxPre,max,maxPost);
-        //t[node] = new Node4487(maxPre,max,maxPost);
+        return new Node4487(node,l,r,maxPre,max,maxPost);
     }
 
     private static Node4487 query(int node, int l, int r, int start, int end){
@@ -73,21 +72,7 @@ public class Pr4487 {
         if(Node4487.isNull(ansLeft)) return ansRight;
         else if(Node4487.isNull(ansRight)) return ansLeft;
 
-        int maxPre=ansLeft.maxPre;
-        if(a[mid] <= a[mid+1] && ansLeft.maxPre == mid-l+1){
-            maxPre = ansLeft.maxPost + ansRight.maxPre;
-        }
-        int maxPost=ansRight.maxPost;
-        if(a[mid] <= a[mid+1] && ansRight.maxPost == r-mid){
-            maxPost = ansLeft.maxPost + ansRight.maxPre;
-        }
-        //int max= Math.max(maxPre, maxPost);
-        int max= Math.max(ansLeft.max, ansRight.max);
-        if(a[mid] <= a[mid+1]){
-            //System.out.println(l + " " + r + " " + mid + " " + a[mid] + " " + a[mid+1] + " " + ansLeft.maxPost + " " + ansRight.maxPre);
-            max = Math.max(max, ansLeft.maxPost + ansRight.maxPre);
-        }
-        return new Node4487(node,l, r,maxPre,max,maxPost);
+        return generate(node, ansLeft, ansRight, l, r);
     }
 
     private static void update(int node, int l, int r, int ind, int val){
@@ -104,46 +89,9 @@ public class Pr4487 {
         } else{
             update(2*node+1,mid+1,r,ind,val);
         }
-
-        int maxPre=t[2*node].maxPre;
-        if(a[mid] <= a[mid+1] && t[2*node].maxPre == mid-l+1){
-            //maxPre = t[2*node].max + t[2*node+1].maxPre;
-            maxPre = t[2*node].maxPost + t[2*node+1].maxPre;
-        }
-        int maxPost=t[2*node+1].maxPost;
-        if(a[mid] <= a[mid+1] && t[2*node+1].maxPost == r-mid){
-            //maxPost = t[2*node+1].max + t[2*node].maxPost;
-            maxPost = t[2*node].maxPost + t[2*node+1].maxPre;
-        }
-        int max= Math.max(t[2*node].max, t[2*node+1].max);
-        //int max= Math.max(maxPre, maxPost);
-        if(a[mid] <= a[mid+1]){
-            max = Math.max(max, t[2*node].maxPost + t[2*node+1].maxPre);
-        }
-        t[node] = new Node4487(node,l,r,maxPre,max,maxPost);
+        t[node] = generate(node, t[2*node], t[2*node+1], l, r);
     }
 }
-
-/*class Node4487 {
-    int maxPre,max,maxPost;
-    public Node4487(int maxPre, int max, int maxPost){
-        this.maxPre = maxPre;
-        this.max = max;
-        this.maxPost = maxPost;
-    }
-
-    public String toString(){
-        return Stream.of(maxPre, max, maxPost)
-                .map(String::valueOf)
-                .collect(Collectors.joining(", "));
-    }
-
-    public static boolean isNull(Node4487 node){
-        return node.max == 0
-                && node.maxPre == 0
-                && node.maxPost == 0;
-    }
-}*/
 
 class Node4487 {
     int ind,left,right,maxPre,max,maxPost;
