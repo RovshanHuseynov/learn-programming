@@ -1,6 +1,5 @@
 package lesson0.eolymp;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -19,6 +18,7 @@ public class Pr4487 {
         }
 
         build(1,1,n);
+        //Arrays.stream(t).forEach(val -> System.out.println(val));
 
         int m = in.nextInt();
         int x,l,r;
@@ -27,6 +27,7 @@ public class Pr4487 {
             l = in.nextInt();
             r = in.nextInt();
             if(x == 1) System.out.println(query(1,1,n,l,r).max);
+            else update(1,1,n,l,r);
         }
     }
 
@@ -34,8 +35,8 @@ public class Pr4487 {
         if(l>r || r<1) return;
 
         if(l == r){
-            //t[node] = new Node4487(node, l,r,1,1,1);
-            t[node] = new Node4487(1,1,1);
+            t[node] = new Node4487(node, l,r,1,1,1);
+            //t[node] = new Node4487(1,1,1);
             return;
         }
 
@@ -49,20 +50,20 @@ public class Pr4487 {
         }
         int maxPost=t[2*node+1].maxPost;
         if(a[mid] <= a[mid+1] && t[2*node+1].maxPost == r-mid){
-            //maxPost = t[2*node+1].max + t[2*node].maxPost;
+            //maxPost = t[2*node].maxPost + t[2*node+1].max;
             maxPost = t[2*node].maxPost + t[2*node+1].maxPre;
         }
-        //int max= Math.max(t[2*node].max, t[2*node+1].max);
-        int max= Math.max(maxPre, maxPost);
+        int max= Math.max(t[2*node].max, t[2*node+1].max);
+        //int max= Math.max(maxPre, maxPost);
         if(a[mid] <= a[mid+1]){
-            //max = Math.max(max, t[2*node].maxPost + t[2*node+1].maxPre);
+            max = Math.max(max, t[2*node].maxPost + t[2*node+1].maxPre);
         }
-        //t[node] = new Node4487(node,l,r,maxPre,max,maxPost);
-        t[node] = new Node4487(maxPre,max,maxPost);
+        t[node] = new Node4487(node,l,r,maxPre,max,maxPost);
+        //t[node] = new Node4487(maxPre,max,maxPost);
     }
 
     private static Node4487 query(int node, int l, int r, int start, int end){
-        if(l > end || r < start) return new Node4487(0,0,0);
+        if(l > end || r < start) return new Node4487(0,0,0,0,0,0);
         if(l >= start && r <= end) return t[node];
 
         int mid = (l+r)/2;
@@ -80,12 +81,50 @@ public class Pr4487 {
         if(a[mid] <= a[mid+1] && ansRight.maxPost == r-mid){
             maxPost = ansLeft.maxPost + ansRight.maxPre;
         }
-        int max= Math.max(maxPre, maxPost);
-        return new Node4487(maxPre,max,maxPost);
+        //int max= Math.max(maxPre, maxPost);
+        int max= Math.max(ansLeft.max, ansRight.max);
+        if(a[mid] <= a[mid+1]){
+            //System.out.println(l + " " + r + " " + mid + " " + a[mid] + " " + a[mid+1] + " " + ansLeft.maxPost + " " + ansRight.maxPre);
+            max = Math.max(max, ansLeft.maxPost + ansRight.maxPre);
+        }
+        return new Node4487(node,l, r,maxPre,max,maxPost);
+    }
+
+    private static void update(int node, int l, int r, int ind, int val){
+        if(l > r || r < 1) return;
+        if(l == r && l == ind){
+            a[l] = val;
+            t[node] = new Node4487(node,l,r,1,1,1);
+            return;
+        }
+
+        int mid = (l+r)/2;
+        if(ind <= mid) {
+            update(2*node,l,mid,ind,val);
+        } else{
+            update(2*node+1,mid+1,r,ind,val);
+        }
+
+        int maxPre=t[2*node].maxPre;
+        if(a[mid] <= a[mid+1] && t[2*node].maxPre == mid-l+1){
+            //maxPre = t[2*node].max + t[2*node+1].maxPre;
+            maxPre = t[2*node].maxPost + t[2*node+1].maxPre;
+        }
+        int maxPost=t[2*node+1].maxPost;
+        if(a[mid] <= a[mid+1] && t[2*node+1].maxPost == r-mid){
+            //maxPost = t[2*node+1].max + t[2*node].maxPost;
+            maxPost = t[2*node].maxPost + t[2*node+1].maxPre;
+        }
+        int max= Math.max(t[2*node].max, t[2*node+1].max);
+        //int max= Math.max(maxPre, maxPost);
+        if(a[mid] <= a[mid+1]){
+            max = Math.max(max, t[2*node].maxPost + t[2*node+1].maxPre);
+        }
+        t[node] = new Node4487(node,l,r,maxPre,max,maxPost);
     }
 }
 
-class Node4487 {
+/*class Node4487 {
     int maxPre,max,maxPost;
     public Node4487(int maxPre, int max, int maxPost){
         this.maxPre = maxPre;
@@ -94,7 +133,7 @@ class Node4487 {
     }
 
     public String toString(){
-        return Stream.of(max, maxPre, maxPost)
+        return Stream.of(maxPre, max, maxPost)
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
     }
@@ -104,9 +143,9 @@ class Node4487 {
                 && node.maxPre == 0
                 && node.maxPost == 0;
     }
-}
+}*/
 
-/*class Node4487 {
+class Node4487 {
     int ind,left,right,maxPre,max,maxPost;
     public Node4487(int ind, int left, int right, int maxPre, int max, int maxPost){
         this.ind = ind;
@@ -118,12 +157,18 @@ class Node4487 {
     }
 
     public String toString(){
-        return Stream.of(ind, left, right, max, maxPre, maxPost)
+        return Stream.of(ind, left, right, maxPre, max, maxPost)
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
     }
+
+    public static boolean isNull(Node4487 node){
+        return node.max == 0
+                && node.maxPre == 0
+                && node.maxPost == 0;
+    }
 }
-*/
+
  /*
  explanation by mtariverdiyev05
 Salam, bəli hər iki məsələnin də həlli segment tree ilə olacaq. Birinci sadəcə position update olduğu üçün simple segment tree, digəri isə range update olduğu üçün lazy segment tree olmalıdır.
