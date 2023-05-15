@@ -16,10 +16,9 @@ public class Pr2906 {
         for(int i=1; i<=n; i++){
             a[i] = in.nextInt();
         }
+
         build(1,1,n);
-       /* for(int i=1; i<=4*n; i++){
-            System.out.println(i + " " + t[i]);
-        }*/
+
         int m = in.nextInt();
         int x,y;
         for(int i=1; i<=m; i++){
@@ -31,6 +30,7 @@ public class Pr2906 {
 
     private static void build(int node, int l, int r){
         if(l > r || r < 1) return;
+
         if(l == r){
             t[node] = new Pair2906(1,1,1);
             return;
@@ -44,9 +44,7 @@ public class Pr2906 {
 
     private static Pair2906 query(int node, int l, int r, int start, int end){
         if(l > end || r < start) return new Pair2906(0,0,0);
-        if(l >= start && r <= end){
-            return t[node];
-        }
+        if(l >= start && r <= end) return t[node];
 
         int mid = (l+r)/2;
         Pair2906 ansLeft = query(2*node,l,mid,start,end);
@@ -72,7 +70,6 @@ public class Pr2906 {
         if(a[mid] <= a[mid+1] && right.maxPost == r-mid){
             maxPost = left.maxPost + right.maxPre;
         }
-
         return new Pair2906(maxPre, max, maxPost);
     }
 }
