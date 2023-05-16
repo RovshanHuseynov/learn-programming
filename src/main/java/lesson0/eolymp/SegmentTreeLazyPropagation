@@ -1,0 +1,78 @@
+package lesson0.eolymp;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class SegmentTreeLazyPropagation {
+    static int n;
+    static int [] a;
+    static int [] t;
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        n = in.nextInt();
+        a = new int[n+1];
+        t = new int[4*n+4];
+        for(int i=1; i<=n; i++){
+            a[i] = in.nextInt();
+        }
+        build(1,1,n);
+        Arrays.stream(t).forEach(val1 -> System.out.print(val1 + " "));
+        System.out.println();
+        int m = in.nextInt();
+        int x,l,r,val;
+        for(int i=1; i<=m; i++){
+            x = in.nextInt();
+            l = in.nextInt();
+            r = in.nextInt();
+
+            if(x == 1){
+                // query
+                System.out.println(query(1,1,n,l,r));
+            } else{
+                // update
+                val = in.nextInt();
+                update(1,1,n,l,r,val);
+                Arrays.stream(t).forEach(val1 -> System.out.print(val1 + " "));
+                System.out.println();
+            }
+        }
+    }
+
+    private static void build(int node, int l, int r) {
+        if(l > r || r < 1) return;
+        if(l == r){
+            t[node] = a[l];
+            return;
+        }
+
+        int mid = (l+r)/2;
+        build(2*node,l,mid);
+        build(2*node+1,mid+1,r);
+        t[node] = t[2*node] + t[2*node+1];
+    }
+
+    private static void update(int node, int l, int r, int start, int end, int val){
+        if(start > end) return;
+        if(l == start && r == end){
+            t[node] += val;
+            return;
+        }
+
+        int mid = (l+r)/2;
+        update(2*node, l, mid, start, Math.min(mid, end), val);
+        update(2*node+1, mid+1, r, Math.max(start, mid+1), end, val);
+    }
+
+    private static int query(int node, int l, int r, int start, int end){
+        if(l > end || r < start) return 0;
+        if(l >= start && r <= end) return t[node];
+
+        int mid = (l+r)/2;
+        return query(2*node,l,mid,start,end) + query(2*node+1,mid+1,r,start,end);
+    }
+}
+
+/*
+10
+1 2 3 4 5 6 7 8 9 10
+ */
