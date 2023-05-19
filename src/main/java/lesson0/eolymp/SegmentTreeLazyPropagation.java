@@ -3,6 +3,7 @@ package lesson0.eolymp;
 import java.util.Arrays;
 import java.util.Scanner;
 
+// source video: https://www.youtube.com/watch?v=xuoQdt5pHj0
 public class SegmentTreeLazyPropagation {
     static int n;
     static int [] a;
@@ -18,6 +19,8 @@ public class SegmentTreeLazyPropagation {
             a[i] = in.nextInt();
         }
         build(1,1,n);
+        System.out.println(Arrays.toString(t));
+        System.out.println(Arrays.toString(lazy));
         int m = in.nextInt();
         int type,l,r,val;
         for(int i=1; i<=m; i++){
@@ -61,7 +64,7 @@ public class SegmentTreeLazyPropagation {
             if(l!=r)
             {
                 lazy[2*node] += val;
-                lazy[2*node] += val;
+                lazy[2*node+1] += val;
             }
             return;
         }
@@ -87,10 +90,19 @@ public class SegmentTreeLazyPropagation {
         if (lazy[node] != 0) {
             t[node] += lazy[node];
             if (l != r) {
-                lazy[2 * node] = lazy[node];
-                lazy[2 * node + 1] = lazy[node];
+                lazy[2*node] = lazy[node];
+                lazy[2*node+1] = lazy[node];
             }
             lazy[node] = 0;
         }
     }
 }
+
+/*
+8
+5 6 8 5 7 1 3 2
+5
+2 0 3 3
+2 0 3 1
+2 0 0 2
+ */
