@@ -6,12 +6,12 @@ import java.util.stream.Stream;
 
 public class Pr4488_without_lazy {
     static int [] a;
-    static Node4488 [] t;
+    static Node4488_without_lazy[] t;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         a = new int[n+1];
-        t = new Node4488[4*n+4];
+        t = new Node4488_without_lazy[4*n+4];
         for(int i=1; i<=n; i++) {
             a[i] = in.nextInt();
         }
@@ -37,7 +37,7 @@ public class Pr4488_without_lazy {
         if(l>r || r<1) return;
 
         if(l == r){
-            t[node] = new Node4488(node, l,r,1,1,1);
+            t[node] = new Node4488_without_lazy(node, l,r,1,1,1);
             return;
         }
 
@@ -47,7 +47,7 @@ public class Pr4488_without_lazy {
         t[node] = generate(node, t[2*node], t[2*node+1], l, r);
     }
 
-    private static Node4488 generate(int node, Node4488 left, Node4488 right, int l, int r){
+    private static Node4488_without_lazy generate(int node, Node4488_without_lazy left, Node4488_without_lazy right, int l, int r){
         int mid = (l+r)/2;
         int maxPre=left.maxPre;
         if(a[mid] <= a[mid+1] && left.maxPre == mid-l+1){
@@ -61,19 +61,19 @@ public class Pr4488_without_lazy {
         if(a[mid] <= a[mid+1]){
             max = Math.max(max, left.maxPost + right.maxPre);
         }
-        return new Node4488(node,l,r,maxPre,max,maxPost);
+        return new Node4488_without_lazy(node,l,r,maxPre,max,maxPost);
     }
 
-    private static Node4488 query(int node, int l, int r, int start, int end){
-        if(l > end || r < start) return new Node4488(0,0,0,0,0,0);
+    private static Node4488_without_lazy query(int node, int l, int r, int start, int end){
+        if(l > end || r < start) return new Node4488_without_lazy(0,0,0,0,0,0);
         if(l >= start && r <= end) return t[node];
 
         int mid = (l+r)/2;
-        Node4488 ansLeft = query(2*node,l,mid,start,end);
-        Node4488 ansRight = query(2*node+1,mid+1,r,start,end);
+        Node4488_without_lazy ansLeft = query(2*node,l,mid,start,end);
+        Node4488_without_lazy ansRight = query(2*node+1,mid+1,r,start,end);
 
-        if(Node4488.isNull(ansLeft)) return ansRight;
-        else if(Node4488.isNull(ansRight)) return ansLeft;
+        if(Node4488_without_lazy.isNull(ansLeft)) return ansRight;
+        else if(Node4488_without_lazy.isNull(ansRight)) return ansLeft;
 
         return generate(node, ansLeft, ansRight, l, r);
     }
@@ -83,7 +83,7 @@ public class Pr4488_without_lazy {
         if(l == r) {
             if(l >= start && l <= end) {
                 a[l] = val;
-                t[node] = new Node4488(node, l, r, 1, 1, 1);
+                t[node] = new Node4488_without_lazy(node, l, r, 1, 1, 1);
             }
             return;
         }
@@ -96,9 +96,13 @@ public class Pr4488_without_lazy {
     }
 }
 
-class Node4488 {
+class Node4488_without_lazy {
     int ind,left,right,maxPre,max,maxPost;
-    public Node4488(int ind, int left, int right, int maxPre, int max, int maxPost){
+
+    public Node4488_without_lazy(){
+        this(0,0,0,0,0,0);
+    }
+    public Node4488_without_lazy(int ind, int left, int right, int maxPre, int max, int maxPost){
         this.ind = ind;
         this.left = left;
         this.right = right;
@@ -113,7 +117,7 @@ class Node4488 {
                 .collect(Collectors.joining(", "));
     }
 
-    public static boolean isNull(Node4488 node){
+    public static boolean isNull(Node4488_without_lazy node){
         return node.max == 0
                 && node.maxPre == 0
                 && node.maxPost == 0;
