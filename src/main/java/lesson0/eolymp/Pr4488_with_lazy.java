@@ -1,10 +1,8 @@
 package lesson0.eolymp;
 
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class Pr4488 {
+public class Pr4488_with_lazy {
     static int [] a;
     static Node4488 [] t;
     public static void main(String[] args) {
@@ -93,30 +91,6 @@ public class Pr4488 {
         update(2*node,l,mid,start,end,val);
         update(2*node+1,mid+1,r,start,end,val);
         t[node] = generate(node, t[2*node], t[2*node+1], l, r);
-    }
-}
-
-class Node4488 {
-    int ind,left,right,maxPre,max,maxPost;
-    public Node4488(int ind, int left, int right, int maxPre, int max, int maxPost){
-        this.ind = ind;
-        this.left = left;
-        this.right = right;
-        this.maxPre = maxPre;
-        this.max = max;
-        this.maxPost = maxPost;
-    }
-
-    public String toString(){
-        return Stream.of(ind, left, right, maxPre, max, maxPost)
-                .map(String::valueOf)
-                .collect(Collectors.joining(", "));
-    }
-
-    public static boolean isNull(Node4488 node){
-        return node.max == 0
-                && node.maxPre == 0
-                && node.maxPost == 0;
     }
 }
 
