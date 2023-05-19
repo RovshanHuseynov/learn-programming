@@ -6,14 +6,14 @@ import java.util.stream.Stream;
 
 public class Pr4488_with_lazy {
     static int [] a;
+    static int [] lazy;
     static Node4488_with_lazy[] t;
-    static Node4488_with_lazy[] lazy;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         a = new int[n+1];
         t = new Node4488_with_lazy[4*n+4];
-        lazy = new Node4488_with_lazy[4*n+4];
+        lazy = new int[4*n+4];
         for(int i=1; i<=n; i++) {
             a[i] = in.nextInt();
         }
@@ -92,8 +92,8 @@ public class Pr4488_with_lazy {
        if(l >= start && r <= end){
            t[node] = new Node4488_with_lazy(node,l,r,val,val,val);
            if(l!=r){
-               lazy[2*node] = new Node4488_with_lazy(node,l,r,val,val,val);
-               lazy[2*node+1] = new Node4488_with_lazy(node,l,r,val,val,val);
+               lazy[2*node] = val;
+               lazy[2*node+1] = val;
            }
            return;
        }
@@ -107,15 +107,15 @@ public class Pr4488_with_lazy {
     }
 
     private static void propagation(int node, int l, int r) {
-        if(lazy[node] == null) lazy[node] = new Node4488_with_lazy(node,l,r,0,0,0);
-        if (lazy[node].max != 0) {
+        if (lazy[node] != 0) {
+            a[l] = a[r] = lazy[node];
             t[node] = new Node4488_with_lazy(node,l,r,
-                lazy[node].maxPre,lazy[node].max,lazy[node].maxPost);
+                r-l+1,r-l+1,r-l+1);
             if (l != r) {
                 lazy[2*node] = lazy[node];
                 lazy[2*node+1] = lazy[node];
             }
-            lazy[node] = new Node4488_with_lazy(node,l,r,0,0,0);
+            lazy[node] = 0;
         }
     }
 }
