@@ -3,24 +3,22 @@ package lesson0.eolymp;
 import java.util.Scanner;
 
 public class Pr3252 {
-    private static long MOD = 1000000007L;
-    private static long p, q;
-    private static int n;
+    private static final long MOD = 1000000007L;
     private static long [] a;
     private static long [] t;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        n = in.nextInt();
+        int n = in.nextInt();
         a = new long[n];
         t = new long[4*n];
-        p = 91;
-        q = 47;
+        long p = 91;
+        long q = 47;
         build(1, 0, n-1);
         //Arrays.stream(t).forEach(i -> System.out.print(i + " "));
         //System.out.println();
         int m = in.nextInt();
         char c;
-        long aa,bb,z,left,right;
+        long aa,bb,z,ind,val,l,r;
         for(int i=1; i<=m; i++){
             c = in.next().charAt(0);
             aa = in.nextInt();
@@ -29,25 +27,24 @@ public class Pr3252 {
             if(c == '!'){
                 // update
                 //System.out.println("update");
-                left = (aa+p)%n;
-                right = (bb+q)%MOD;
-                a[(int)left] = right;
+                ind = (aa+p)% n;
+                val = (bb+q)% MOD;
                 //System.out.println(left);
                 //System.out.println(right);
-                update(1, 0, n-1, left, right);
+                update(1, 0, n-1, ind, val);
                 //System.out.println(Arrays.toString(a));
                 //System.out.println(Arrays.toString(t));
                 //System.out.println();
             } else if(c == '?') {
                 // return sum
                 //System.out.println("return sum");
-                left = (aa+p)%n;
-                right = (bb+q)%n;
-                if(left > right) left = right + left - (right = left);
-                z = query(1,0,n-1,left,right);
+                l = (aa+p)%n;
+                r = (bb+q)%n;
+                if(l > r) l = r + l - (r = l);
+                z = query(1,0,n-1,l,r);
                 System.out.println(z);
-                p = ((p * 31L) + z) %MOD;
-                q = ((q * 29L) + z) %MOD;
+                p = ((p * 31L) + z) % MOD;
+                q = ((q * 29L) + z) % MOD;
             }
         }
     }
@@ -75,6 +72,7 @@ public class Pr3252 {
     private static void update(int node, int l, int r, long ind, long val){
         if(l == r && l == ind) {
             t[node] = val;
+            a[l] = val;
             return;
         }
 
