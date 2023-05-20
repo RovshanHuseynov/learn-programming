@@ -98,19 +98,11 @@ public class Pr4488_with_lazy {
         if(l > end || r < start) return;
 
         // total overlap
-       if(l >= start && r <= end){
-           if(l==r){
-               a[l] = val;
-               t[node] = new Node4488_with_lazy(node,l,r,1,1,1);
-           }
-           else if(l!=r){
-               IntStream.rangeClosed(l,r).forEach(i -> a[i] = val);
-               t[node] = generate(node, t[2*node], t[2*node+1], l, r, (l+r)/2);
-               lazy[2*node] = val;
-               lazy[2*node+1] = val;
-           }
+        if(l >= start && r <= end){
+           lazy[node] = val;
+           propagation(node, l, r);
            return;
-       }
+        }
 
         // partial overlap
         int mid = (l+r)/2;
