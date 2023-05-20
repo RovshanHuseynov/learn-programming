@@ -9,7 +9,7 @@ public class Pr4473 {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         a = new int[n+1];
-        tree = new int[3*n];
+        tree = new int[4*n+4];
         for(int i=1; i<=n; i++){
             a[i] = in.nextInt();
         }
@@ -49,8 +49,8 @@ public class Pr4473 {
     }
 
     private static int query(int node, int l, int r, int start, int end){
-        if(start > r || end < l) return 0;
-        if(start <= l && end >= r) return tree[node];
+        if(l > end || r < start) return Integer.MIN_VALUE;
+        if(l >= start && r <= end) return tree[node];
 
         int mid = (l+r)/2;
         return Math.max(query(2*node, l, mid, start, end), query(2*node+1, mid+1, r,start,end));
