@@ -1,7 +1,9 @@
 package lesson0.eolymp;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Pr4488_with_lazy {
@@ -19,7 +21,8 @@ public class Pr4488_with_lazy {
         }
 
         build(1,1,n);
-        //Arrays.stream(t).forEach(val -> System.out.println(val));
+        System.out.println("ind, left, right, maxPre, max, maxPost");
+        Arrays.stream(t).forEach(val -> System.out.println(val));
 
         int m = in.nextInt();
         int x,l,r,val;
@@ -46,11 +49,10 @@ public class Pr4488_with_lazy {
         int mid = (l+r)/2;
         build(2*node, l, mid);
         build(2*node+1, mid+1, r);
-        t[node] = generate(node, t[2*node], t[2*node+1], l, r);
+        t[node] = generate(node, t[2*node], t[2*node+1], l, r, mid);
     }
 
-    private static Node4488_with_lazy generate(int node, Node4488_with_lazy left, Node4488_with_lazy right, int l, int r){
-        int mid = (l+r)/2;
+    private static Node4488_with_lazy generate(int node, Node4488_with_lazy left, Node4488_with_lazy right, int l, int r, int mid){
         int maxPre=left.maxPre;
         if(a[mid] <= a[mid+1] && left.maxPre == mid-l+1){
             maxPre = left.maxPost + right.maxPre;
@@ -79,7 +81,7 @@ public class Pr4488_with_lazy {
         if(Node4488_with_lazy.isNull(ansLeft)) return ansRight;
         else if(Node4488_with_lazy.isNull(ansRight)) return ansLeft;
 
-        return generate(node, ansLeft, ansRight, l, r);
+        return generate(node, ansLeft, ansRight, l, r, (l+r)/2);
     }
 
     private static void update(int node, int l, int r, int start, int end, int val){
@@ -103,15 +105,18 @@ public class Pr4488_with_lazy {
         //System.out.printf("%d %d %d %d %d %d\n", node,  l,  r,  start,  end,  val);
         update(2*node,l,mid,start,end,val);
         update(2*node+1,mid+1,r,start,end,val);
-        t[node] = generate(node, t[2*node], t[2*node+1], l, r);
+        t[node] = generate(node, t[2*node], t[2*node+1], l, r, mid);
     }
 
     private static void propagation(int node, int l, int r) {
         if (lazy[node] != 0) {
-            a[l] = a[r] = lazy[node];
-            t[node] = new Node4488_with_lazy(node,l,r,
-                r-l+1,r-l+1,r-l+1);
-            if (l != r) {
+            if(l == r){
+                a[l] = lazy[node];
+                t[node] = new Node4488_with_lazy(node,l,r,1,1,1);
+            }
+            else if (l != r) {
+                t[node] = generate(node, t[2*node], t[2*node+1], l, r, (l+r)/2);
+                IntStream.rangeClosed(l,r).forEach(val -> a[val] = lazy[node]);
                 lazy[2*node] = lazy[node];
                 lazy[2*node+1] = lazy[node];
             }
@@ -122,10 +127,6 @@ public class Pr4488_with_lazy {
 
 class Node4488_with_lazy {
     int ind,left,right,maxPre,max,maxPost;
-
-    public Node4488_with_lazy(){
-        this(0,0,0,0,0,0);
-    }
     public Node4488_with_lazy(int ind, int left, int right, int maxPre, int max, int maxPost){
         this.ind = ind;
         this.left = left;
