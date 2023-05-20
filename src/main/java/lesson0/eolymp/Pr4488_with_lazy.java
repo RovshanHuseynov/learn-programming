@@ -1,6 +1,5 @@
 package lesson0.eolymp;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -21,8 +20,8 @@ public class Pr4488_with_lazy {
         }
 
         build(1,1,n);
-        System.out.println("ind, left, right, maxPre, max, maxPost");
-        Arrays.stream(t).forEach(val -> System.out.println(val));
+        /*System.out.println("ind, left, right, maxPre, max, maxPost");
+        Arrays.stream(t).forEach(val1 -> System.out.print(val1 + " "));*/
 
         int m = in.nextInt();
         int x,l,r,val;
@@ -33,7 +32,15 @@ public class Pr4488_with_lazy {
             if(x == 1) System.out.println(query(1,1,n,l,r).max);
             else {
                 val = in.nextInt();
+                /*Arrays.stream(lazy).forEach(val1 -> System.out.print(val1 + " "));
+                System.out.println();*/
                 update(1,1,n,l,r,val);
+                /*System.out.println("ind, left, right, maxPre, max, maxPost");
+                Arrays.stream(a).forEach(val1 -> System.out.print(val1 + " "));
+                System.out.println();
+                Arrays.stream(lazy).forEach(val1 -> System.out.print(val1 + " "));
+                System.out.println();
+                Arrays.stream(t).forEach(val1 -> System.out.print(val1 + " "));*/
             }
         }
     }
@@ -71,17 +78,17 @@ public class Pr4488_with_lazy {
     private static Node4488_with_lazy query(int node, int l, int r, int start, int end){
         propagation(node,l,r);
 
-        if(l > end || r < start) return new Node4488_with_lazy(node,l,r,0,0,0);
+        if(l > end || r < start) return new Node4488_with_lazy();
         if(l >= start && r <= end) return t[node];
 
         int mid = (l+r)/2;
         Node4488_with_lazy ansLeft = query(2*node,l,mid,start,end);
         Node4488_with_lazy ansRight = query(2*node+1,mid+1,r,start,end);
 
-        if(Node4488_with_lazy.isNull(ansLeft)) return ansRight;
-        else if(Node4488_with_lazy.isNull(ansRight)) return ansLeft;
+        if(ansLeft == null) return ansRight;
+        else if(ansRight == null) return ansLeft;
 
-        return generate(node, ansLeft, ansRight, l, r, (l+r)/2);
+        return generate(node, ansLeft, ansRight, l, r, mid);
     }
 
     private static void update(int node, int l, int r, int start, int end, int val){
@@ -92,8 +99,13 @@ public class Pr4488_with_lazy {
 
         // total overlap
        if(l >= start && r <= end){
-           t[node] = new Node4488_with_lazy(node,l,r,val,val,val);
-           if(l!=r){
+           if(l==r){
+               a[l] = val;
+               t[node] = new Node4488_with_lazy(node,l,r,1,1,1);
+           }
+           else if(l!=r){
+               IntStream.rangeClosed(l,r).forEach(i -> a[i] = val);
+               t[node] = generate(node, t[2*node], t[2*node+1], l, r, (l+r)/2);
                lazy[2*node] = val;
                lazy[2*node+1] = val;
            }
@@ -115,8 +127,8 @@ public class Pr4488_with_lazy {
                 t[node] = new Node4488_with_lazy(node,l,r,1,1,1);
             }
             else if (l != r) {
+                IntStream.rangeClosed(l,r).forEach(i -> a[i] = lazy[node]);
                 t[node] = generate(node, t[2*node], t[2*node+1], l, r, (l+r)/2);
-                IntStream.rangeClosed(l,r).forEach(val -> a[val] = lazy[node]);
                 lazy[2*node] = lazy[node];
                 lazy[2*node+1] = lazy[node];
             }
@@ -127,6 +139,9 @@ public class Pr4488_with_lazy {
 
 class Node4488_with_lazy {
     int ind,left,right,maxPre,max,maxPost;
+    public Node4488_with_lazy(){
+        this(0,0,0,0,0,0);
+    }
     public Node4488_with_lazy(int ind, int left, int right, int maxPre, int max, int maxPost){
         this.ind = ind;
         this.left = left;
@@ -137,15 +152,9 @@ class Node4488_with_lazy {
     }
 
     public String toString(){
-        return Stream.of(ind, left, right, maxPre, max, maxPost)
+        return "(" + Stream.of(ind, left, right, maxPre, max, maxPost)
                 .map(String::valueOf)
-                .collect(Collectors.joining(", "));
-    }
-
-    public static boolean isNull(Node4488_with_lazy node){
-        return node.max == 0
-                && node.maxPre == 0
-                && node.maxPost == 0;
+                .collect(Collectors.joining(",")) + ")";
     }
 }
 
