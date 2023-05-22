@@ -64,25 +64,6 @@ public class Pr2905 {
 
     private static long update(int node, int l, int r, int start, int end){
         propagation(node, l, r);
-
-        // no overlap
-        if(l > end || r < start) return 0;
-
-        // total overlap
-        if(l >= start && r <= end){
-            t[node] += val;
-            if(l!=r)
-            {
-                lazy[2*node] += val;
-                lazy[2*node+1] += val;
-            }
-            return;
-        }
-
-        // partial overlap
-        int mid = (l+r)/2;
-        update(2*node,l,mid,start,end,val);
-        update(2*node+1,mid+1,r,start,end,val);
-        t[node] = Math.min(t[2*node], t[2*node+1]);
+        return 0;
     }
 }
