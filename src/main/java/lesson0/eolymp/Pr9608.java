@@ -1,6 +1,5 @@
 package lesson0.eolymp;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Pr9608 {
@@ -30,11 +29,11 @@ public class Pr9608 {
             g[v][u] = w;
         }
 
-
-
-        System.out.printf("%.2f\n", relax(a,b));
-        System.out.printf("%.2f\n", relax(b,c));
-        System.out.printf("%.2f\n", relax(a,c));
+        //System.out.printf("%.2f\n", relax(a,b));
+        //System.out.printf("%.2f\n", relax(b,c));
+        //System.out.printf("%.2f\n", relax(a,c));
+        if(relax(a,b) == MAX) System.out.println("-1");
+        else System.out.printf("%.1f\n", (relax(a,b) + relax(b,c) - relax(a,c)) * d);
     }
 
     private static double relax(int start, int end){
