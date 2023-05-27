@@ -21,11 +21,10 @@ public class Pr9608 {
         int m = in.nextInt();
         int u,v;
         double w;
-        for(int i=1; i<=n; i++){
-            for(int j=1; j<=n; j++){
+        for(int i=1; i<=n; i++)
+            for(int j=1; j<=n; j++)
                 g[i][j] = MAX;
-            }
-        }
+
         for(int i=1; i<=m; i++){
             u = in.nextInt();
             v = in.nextInt();
@@ -44,7 +43,7 @@ public class Pr9608 {
     }
 
     private static double relax(int start, int end){
-        for(int i=1; i<=n; i++) {
+        for(int i=0; i<=n; i++) {
             used[i] = false;
             dis[i] = MAX;
         }
@@ -70,7 +69,7 @@ public class Pr9608 {
     private static void dijkstra(int from){
         used[from] = true;
         for(int i=1; i<=n; i++){
-            if(!used[i] && g[from][i] != MAX && dis[i] > dis[from] + g[from][i]){
+            if(!used[i] && dis[i] > dis[from] + g[from][i]){
                 dis[i] = dis[from] + g[from][i];
             }
         }
