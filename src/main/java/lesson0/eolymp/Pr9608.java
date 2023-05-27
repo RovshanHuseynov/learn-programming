@@ -32,7 +32,9 @@ public class Pr9608 {
         //System.out.printf("%.2f\n", relax(a,b));
         //System.out.printf("%.2f\n", relax(b,c));
         //System.out.printf("%.2f\n", relax(a,c));
-        if(relax(a,b) == MAX) System.out.println("-1");
+        if(relax(a,b) == MAX ||
+            relax(b,c) == MAX ||
+                relax(a,c) == MAX) System.out.println("-1");
         else System.out.printf("%.1f\n", (relax(a,b) + relax(b,c) - relax(a,c)) * d);
     }
 
