@@ -15,26 +15,26 @@ public class Pr4819 {
         int m = in.nextInt();
         int s = in.nextInt();
         a = new boolean[n+1][n+1];
+        used = new boolean[n+1];
+        dis = new int[n+1];
         int u,v;
         for(int i=1; i<=m; i++){
             u = in.nextInt();
             v = in.nextInt();
-            a[u][v] = true;
+            a[v][u] = true;
         }
-
+        bfs(s);
         int max = 0;
         for(int i=1; i<=n; i++){
-            max = Math.max(max, bfs(i, s));
+            max = Math.max(max, dis[i]);
         }
+        //System.out.println(Arrays.toString(dis));
         System.out.println(max);
     }
 
-    private static int bfs(int start, int end){
+    private static void bfs(int start){
         Queue<Integer> queue = new LinkedList<>();
-        used = new boolean[n+1];
-        dis = new int[n+1];
         queue.add(start);
-        used[start] = true;
 
         int from;
         while(!queue.isEmpty()){
@@ -47,6 +47,5 @@ public class Pr4819 {
                 }
             }
         }
-        return dis[end];
     }
 }
