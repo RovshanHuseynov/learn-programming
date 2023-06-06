@@ -13,7 +13,6 @@ public class Pr9975 {
         BigInteger c;
         for(int i=3; i<=n; i++){
             sum = sum.add(a).add(b);
-            //System.out.println(a + " " + b + " " + sum);
             c = a.add(b);
             a = b;
             b = c;
