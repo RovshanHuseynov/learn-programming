@@ -7,7 +7,7 @@ public class Pr8515 {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         String s;
-        int val,ind,freq;
+        int val,ind;
         boolean homogeneous = false, heterogeneous = false;
         List<Integer> list = new ArrayList<>();
         Map<Integer, Integer> map = new HashMap<>();
