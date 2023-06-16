@@ -15,7 +15,8 @@ public class Pr2585 {
             sum[i] = sum[i-1] + val;
         }
 
-        int i=1, j=n, maxI=1, maxJ=n;
+        //IntStream.rangeClosed(1,n).forEach(i -> System.out.print(sum[i] + " "));
+        int i=0, j=n, maxI=0, maxJ=n;
         while(i<=n){
             if(sum[j]-sum[i] > max){
                 max = sum[j]-sum[i];
@@ -27,10 +28,16 @@ public class Pr2585 {
         while(j>=maxI){
             if(sum[j]-sum[maxI] > max){
                 max = sum[j]-sum[maxI];
-                //maxJ = j;
+                maxJ = j;
             }
             j--;
         }
+        //System.out.println();
+        //System.out.println(maxI + " " + maxJ);
         System.out.println(max);
     }
 }
+/*
+10
+10 -3 -3 -3 10 1 1 1 0 0
+ */
