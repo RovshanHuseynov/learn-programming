@@ -20,7 +20,6 @@ public class Pr1663 {
     static boolean correct1(String text){
         int len = text.length();
         int cntOpen = 0;
-        int cntClose = 0;
         for(int i=0; i<len; i++){
             if(text.charAt(i) == '(') cntOpen++;
             else {
