@@ -8,40 +8,36 @@ public class Pr11427 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
-        int cur;
-        List<Integer> list = new ArrayList<>(n+1);
-        List<Integer> listMin = new ArrayList<>();
-        List<Integer> listMax = new ArrayList<>();
-        int min = 10000;
-        for(int i=0; i<n; i++) {
-            cur = in.nextInt();
-            list.add(cur);
-            if(cur < min){
-                listMin.add(i);
-                min = cur;
-            }
+        List<Integer> input = new ArrayList<>();
+        int val;
+        for(int i=0; i<n; i++){
+            val = in.nextInt();
+            input.add(val);
         }
-        int max = -10000;
-        for(int i=n-1; i>=0; i--) {
-            if(list.get(i) > max){
-                listMax.add(i);
-                max = list.get(i);
-            }
-        }
-        list.forEach(i -> System.out.print(i + " "));
-        System.out.println();
-        listMax.forEach(i -> System.out.print(i + " "));
-        System.out.println();
-        listMin.forEach(i -> System.out.print(i + " "));
-        System.out.println();
+        int ans = 0;
 
-        int indMax = listMax.size()-1;
-        int indMin = listMin.size()-1;
-        while(indMin > 0){
-            if(listMax.get(indMax) > listMin.get(indMin) && list.get(listMax.get(indMax)) > list.get(listMin.get(indMin))) break;
-            indMin--;
+        int i=0, j=n-1;
+        boolean exitI = false, exitJ = false, queue = false;
+
+        while(i < j){
+            if(input.get(j) - input.get(i) > ans) ans = input.get(j) - input.get(i);
+            if(input.get(i+1) < input.get(i)) i++;
+            if(i < j && input.get(j) - input.get(i) > ans) ans = input.get(j) - input.get(i);
+            if(input.get(j-1) > input.get(j)) j--;
+            if(i < j && input.get(j) - input.get(i) > ans) ans = input.get(j) - input.get(i);
+
+            if(exitI && exitJ) break;
+            else if(queue) {
+                i++;
+                queue = false;
+                if(i == n) exitI = true;
+            }
+            else {
+                j--;
+                queue = true;
+                if(j == 0) exitJ = true;
+            }
         }
-        System.out.println(indMax + " " + indMin);
-        System.out.println(list.get(listMax.get(indMax)) - list.get(listMin.get(indMin)));
+        System.out.println(ans);
     }
 }
