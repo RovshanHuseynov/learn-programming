@@ -15,24 +15,35 @@ public class Pr11427 {
             input.add(val);
         }
         int ans = 0;
-
         int i=0, j=n-1;
-        boolean exitI = false, exitJ = false, queue = false;
+        int max = -10000, min= 10000;
+        boolean exitI = false, exitJ = false, queue = false, extra;
 
         while(i < j){
-            if(input.get(j) - input.get(i) > ans) ans = input.get(j) - input.get(i);
-            if(input.get(i+1) < input.get(i)) i++;
-            if(i < j && input.get(j) - input.get(i) > ans) ans = input.get(j) - input.get(i);
-            if(input.get(j-1) > input.get(j)) j--;
-            if(i < j && input.get(j) - input.get(i) > ans) ans = input.get(j) - input.get(i);
+            extra = true;
+            min = Math.min(min, input.get(i));
+            max = Math.max(max, input.get(j));
+            if(max - min > ans) ans = max - min;
+            if(input.get(i+1) < input.get(i)) {
+                i++;
+                min = Math.min(min, input.get(i));
+                extra = false;
+            }
+            if(i < j && max - min > ans) ans = max - min;
+            if(input.get(j-1) > input.get(j)) {
+                j--;
+                max = Math.max(max, input.get(j));
+                extra = false;
+            }
+            if(i < j && max - min > ans) ans = max - min;
 
             if(exitI && exitJ) break;
-            else if(queue) {
+            else if(extra && queue) {
                 i++;
                 queue = false;
-                if(i == n) exitI = true;
+                if(i == n-1) exitI = true;
             }
-            else {
+            else if(extra){
                 j--;
                 queue = true;
                 if(j == 0) exitJ = true;
